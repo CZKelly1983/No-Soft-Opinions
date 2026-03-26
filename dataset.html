@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dataset — No Soft Opinions: Cinema</title>
+  <meta name="description" content="How 1,104 films were selected, what that means, and what's missing. The honest account of the dataset's inclusions, exclusions, and the structural biases they reveal.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .dataset-layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .dataset-layout { grid-template-columns: 1fr; }
+      .dataset-toc { display: none; }
+    }
+
+    .dataset-toc {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+    }
+
+    .dataset-toc-title {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .dataset-toc a {
+      display: block;
+      color: var(--text-muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      transition: color var(--transition);
+    }
+
+    .dataset-toc a:last-child { border-bottom: none; }
+    .dataset-toc a:hover { color: var(--gold); }
+
+    .source-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .source-item {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .source-item:last-child { border-bottom: none; }
+
+    .source-item:nth-child(odd) { background: var(--surface); }
+    .source-item:nth-child(even) { background: var(--surface-2); }
+
+    .source-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .source-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .source-count {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold);
+      white-space: nowrap;
+      text-align: right;
+      padding-top: 0.2rem;
+    }
+
+    .absence-block {
+      border-left: 3px solid var(--border-light);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      background: var(--surface);
+      border-radius: 0 4px 4px 0;
+      transition: border-color var(--transition);
+    }
+
+    .absence-block:hover {
+      border-left-color: var(--gold-dim);
+    }
+
+    .absence-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .absence-stat {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .absence-block p {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .cta-block h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-block p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">The Dataset</span>
+        <h1 class="page-title">How Films Were Selected,<br>What That Means,<br>and What's Missing.</h1>
+        <p class="page-subtitle">Any ranking project makes an argument through its inclusions and exclusions before it scores anything. This is ours — made fully visible.</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="dataset-layout">
+
+        <div>
+
+          <!-- THE QUESTION BEHIND THE QUESTION -->
+          <section class="about-section" id="question">
+            <h2>The Question Behind the Question</h2>
+            <p>Before scoring a single film, we had to answer a more fundamental question: which films should be in the dataset at all? This is not a trivial decision. Any ranking project makes an argument through its inclusions and exclusions before it scores anything. A dataset drawn entirely from Oscar nominees makes one argument about what cinema is. A dataset drawn entirely from box office records makes a completely different one. We wanted a dataset that could hold both arguments simultaneously — and be honest about what it could and couldn't see.</p>
+          </section>
+
+          <!-- HOW WE BUILT THE LIST -->
+          <section class="about-section" id="methodology">
+            <h2>How We Built the List</h2>
+            <p>The 1,104 films in the No Soft Opinions index were drawn from six source lists using a cross-list comparison methodology designed to surface films with genuine multi-dimensional significance rather than simply aggregating everything that appeared anywhere.</p>
+            <p>The foundation is every Oscar Best Picture nominee across the Academy's history. To this we added the top 100 unique films from each of five further source lists — selecting films that appeared on those lists but were not already represented through the Oscar nominees. This approach deliberately privileges films that achieved significance across multiple measures, while ensuring each source contributes meaningfully rather than being drowned out by overlap.</p>
+
+            <div class="source-list">
+              <div class="source-item">
+                <div>
+                  <div class="source-name">Oscar Best Picture Nominees</div>
+                  <div class="source-desc">The foundation layer, included in full. Every film nominated for Best Picture across the Academy's history, from <em>Wings</em> in 1927 to the present. Covers institutional recognition, prestige filmmaking, and the historical record of what Hollywood considered its finest work.</div>
+                </div>
+                <div class="source-count">Full list<br>foundation</div>
+              </div>
+              <div class="source-item">
+                <div>
+                  <div class="source-name">Global Box Office Top 300, Inflation-Adjusted</div>
+                  <div class="source-desc">Top 100 unique additions. Covers commercial reach across eras, with inflation adjustment ensuring a 1939 blockbuster and a 2019 blockbuster are measured on comparable terms. Films the public chose to see in enormous numbers.</div>
+                </div>
+                <div class="source-count">+100 films</div>
+              </div>
+              <div class="source-item">
+                <div>
+                  <div class="source-name">IMDb Top 500 by Rating</div>
+                  <div class="source-desc">Top 100 unique additions. Covers active audience engagement in the streaming age. IMDb ratings reflect the living judgements of a global audience rating films now, not critical assessments from the time of release. Brings in films with devoted modern audiences that institutional lists miss.</div>
+                </div>
+                <div class="source-count">+100 films</div>
+              </div>
+              <div class="source-item">
+                <div>
+                  <div class="source-name">Rotten Tomatoes Top 500 by Critical Score</div>
+                  <div class="source-desc">Top 100 unique additions. Covers aggregated critical reception across publications and eras. RT aggregation rewards films that offend nobody more than films that take risks — a documented bias — but as a measure of broad critical consensus it is a genuine signal.</div>
+                </div>
+                <div class="source-count">+100 films</div>
+              </div>
+              <div class="source-item">
+                <div>
+                  <div class="source-name">Production Budget Top 500</div>
+                  <div class="source-desc">Top 100 unique additions. Covers industrial ambition and studio investment. Films that cost the most to make represent decisions about what studios believed audiences wanted and what technology could achieve. Some of the most formally innovative films in history were expensive. So were some of the most cynical.</div>
+                </div>
+                <div class="source-count">+100 films</div>
+              </div>
+              <div class="source-item">
+                <div>
+                  <div class="source-name">Director Influence List of 300 Films</div>
+                  <div class="source-desc">Top 100 unique additions. Constructed specifically for this project, selecting films whose directors demonstrably changed how subsequent filmmakers worked — through formal innovation, cultural permission, or industrial transformation. Brings in films that influenced everything without necessarily being seen by everyone.</div>
+                </div>
+                <div class="source-count">+100 films</div>
+              </div>
+            </div>
+
+            <p>A film that appears on multiple source lists — The Godfather scores highly across all six — accumulates presence naturally. A film significant on only one axis still enters through its strongest dimension. Both kinds of significance are respected.</p>
+          </section>
+
+          <!-- MANUAL ADDITIONS -->
+          <section class="about-section" id="additions">
+            <h2>Manual Additions</h2>
+            <p>A small number of films were added by hand where their absence would have been a conspicuous gap. <em>The Room</em> is the most deliberate example — it appears on none of the six source lists by any conventional measure, yet its participatory midnight screening culture, its so-bad-it's-good canonical status, and its role in defining a category of cinema make it more significant to a complete picture of film culture than many critically respected films that entered automatically. The spoon-throwing ritual, the Tommy Wiseau phenomenon, <em>The Disaster Artist</em> connection — these are real cultural data points that a comprehensive cinema index cannot ignore.</p>
+            <p>A selection of streaming-first releases were also added to represent a category of filmmaking the source lists structurally cannot capture — films made for platforms that never had conventional theatrical releases and therefore generate no box office data, no Oscar eligibility in most cases, and limited critical infrastructure. These films are scored on the same seven dimensions and three frameworks as every other film in the dataset, with streaming viewership used as the D1 equivalent and all provisional scores flagged accordingly. They represent the future shape of cinema, and the methodology needed to be honest about how it handles them.</p>
+          </section>
+
+          <!-- WHAT THIS MEANS -->
+          <section class="about-section" id="what-it-means">
+            <h2>What This Selection Methodology Means</h2>
+            <p>The dataset is a very good picture of what Western institutional film culture — the Academy, Anglophone criticism, global box office, Hollywood studio investment — considered significant cinema between 1920 and 2025. It is a less complete picture of what cinema actually was during that period.</p>
+            <p>The gap between those two things is not a flaw we are embarrassed about. It is a finding we are transparent about. What got included, what got excluded, and why tells you something true about the structures of film culture that no individual ranking can capture.</p>
+          </section>
+
+          <!-- ABSENCES -->
+          <section class="about-section" id="absences">
+            <h2>The Genres and Traditions That Are Underrepresented — and Why</h2>
+            <p>Because the source lists are overwhelmingly Anglo-American in orientation, and because institutional recognition has historically been gatekept by specific critical and commercial establishments, the dataset inherits real and documentable biases. These are worth naming directly.</p>
+
+            <div class="absence-block">
+              <div class="absence-title">Horror</div>
+              <div class="absence-stat">Present but underweighted — strong D5 scores, limited dataset volume</div>
+              <p>The Academy has historically excluded horror and critical canonical lists have been slow to recognise it despite its enormous formal influence. Psycho, The Shining, The Exorcist, Get Out — all in the dataset, with D5 Filmmaker Influence scores among the highest in the index. But the horror films that didn't break through institutional barriers sufficiently to appear on multiple lists are absent, and there are many of them. The genre's formal contribution to cinema is larger than its representation here suggests.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">Documentary</div>
+              <div class="absence-stat">5 films in a dataset of 1,104 — the most significant underrepresentation by volume</div>
+              <p>Documentary filmmaking has produced some of the most formally innovative and culturally consequential work in cinema history — the observational grammar of the Maysles brothers, the essay film tradition of Chris Marker and Agnès Varda, the ethical provocations of Errol Morris and Joshua Oppenheimer, the commercial breakthroughs of Michael Moore — but documentary rarely generates Oscar nominations, box office figures, or the RT aggregation presence needed to enter the source lists automatically. The five that are here all crossed into art cinema canonical lists. The vast majority of significant documentary work did not. Man with a Movie Camera scores D5 90 — the ninth highest filmmaker influence score in the entire dataset. The gap between that score and documentary's five-film representation tells you something specific about whose cinema gets written about and preserved.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">Bollywood and Indian Cinema</div>
+              <div class="absence-stat">2 films — India produces more films annually than Hollywood</div>
+              <p>India produces more films annually than Hollywood, has developed entirely distinct formal conventions for musical integration, melodrama, spectacle, and comedy, and has an audience measured in billions. A film can be the highest-grossing Indian film of all time and not appear on any of our six source lists because those lists are structured around Western critical and commercial infrastructure. The absence is not a judgement on Indian cinema. It is a measurement of how completely Western institutional film culture has failed to engage with it.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">African Cinema</div>
+              <div class="absence-stat">3 films — including 2 by Ousmane Sembène, the father of African cinema</div>
+              <p>The entire body of work from Egyptian cinema — one of the oldest and most prolific film industries in the world — is absent. Nigerian cinema, South African cinema, Ethiopian cinema, Senegalese cinema beyond Sembène — all absent. The D5 score for <em>Touki Bouki</em> is 62, reflecting Djibril Diop Mambéty's documented influence on subsequent African filmmakers, but the films that built on that influence are invisible in the dataset because they never appeared on Western canonical lists. This is the most complete blind spot in the dataset and the one we are most aware of.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">East Asian Cinema Beyond Japan and Korea</div>
+              <div class="absence-stat">Partially represented — Japanese and Korean cinema appear; broader East Asia largely absent</div>
+              <p>Japanese and Korean cinema appear reasonably because both broke through Western institutional barriers sufficiently — Kurosawa, Ozu, and Mizoguchi through the art cinema canon, the Korean New Wave through the breakthrough culminating in <em>Parasite</em>. Chinese cinema has Zhang Yimou, Chen Kaige, Edward Yang, and Hou Hsiao-hsien — but only partially. Hong Kong cinema has a handful of entries. The breadth of Thai, Indonesian, Vietnamese, and Filipino cinema that never crossed Western critical thresholds is almost entirely absent.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">Latin American Cinema</div>
+              <div class="absence-stat">Present only where Western art house distribution reached — the tradition behind those films is not</div>
+              <p>Brazilian Cinema Novo, the Argentine New Wave, Mexican golden age cinema, Colombian and Chilean cinema — representing decades of formal innovation and cultural significance — are invisible in the dataset not because they are insignificant but because the structures that generated our source lists didn't see them. <em>Amores Perros</em>, <em>City of God</em>, <em>Y Tu Mamá También</em>, and a handful of others are here because they achieved Western critical and commercial crossover. The tradition they emerged from is not.</p>
+            </div>
+
+            <div class="absence-block">
+              <div class="absence-title">Non-Western Animation</div>
+              <div class="absence-stat">Beyond the Western canonical lineage and Studio Ghibli — essentially absent</div>
+              <p>European animation, Eastern European animation, the National Film Board of Canada tradition, independent animation — all largely absent despite the enormous formal influence of filmmakers like Walerian Borowczyk and Jan Švankmajer on what directors like Lynch and Gilliam subsequently did.</p>
+            </div>
+          </section>
+
+          <!-- WHAT THE ABSENCES TELL US -->
+          <section class="about-section" id="what-absences-mean">
+            <h2>What These Absences Tell Us</h2>
+            <p>These gaps are not incidental. They reflect whose taste has historically defined institutional film culture, whose criticism got written and published and translated and digitised, and whose cinema was absorbed into the training data of the AI that scored these films. The AI that built this index has read more film criticism than any human alive — and that criticism is predominantly Western, predominantly English-language, and predominantly oriented toward the canonical traditions that the Academy and the major critical publications have recognised.</p>
+            <p>The biases in this dataset are the biases of that critical infrastructure made visible and measurable. Documenting them honestly is more useful than pretending to correct for them with arbitrary additions. We could have added fifty Bollywood films by hand. We chose not to, because doing so would have broken the cross-list methodology that makes the scores consistent and comparable. What we can do — and what we are committed to doing — is being completely transparent about what the methodology can and cannot see, and keeping the framework open.</p>
+          </section>
+
+          <!-- SUGGEST A FILM -->
+          <section class="about-section" id="suggest">
+            <h2>The Framework Is Open</h2>
+            <p>The seven dimensions and three philosophical frameworks are consistent, transparent, and applicable to any film. Jeanne Dielman and Transformers: Revenge of the Fallen are in the same dataset scored against the same criteria, and that comparison is honest and arguable precisely because the methodology is visible.</p>
+            <p>That means the index is not a closed canonical list. It is a framework that can appraise any film on the same terms.</p>
+
+            <div class="cta-block">
+              <h3>Suggest a Film</h3>
+              <p>If there is a film you believe should be here — a documentary we missed, a Bollywood classic that deserves a score, a horror film the Academy ignored, a film from a cinema tradition the source lists never reached, a recent streaming release that belongs in the conversation — we want to hear from you. We will score it against the same seven dimensions and three frameworks and consider adding it to the index. The only requirement is that the film is significant enough to argue for.</p>
+              <a href="https://x.com/cjk_1983" target="_blank" rel="noopener" class="btn btn-primary">Get in touch on X / Twitter →</a>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <aside>
+          <nav class="dataset-toc">
+            <div class="dataset-toc-title">Contents</div>
+            <a href="#question">The Question Behind the Question</a>
+            <a href="#methodology">How We Built the List</a>
+            <a href="#additions">Manual Additions</a>
+            <a href="#what-it-means">What This Means</a>
+            <a href="#absences">What's Underrepresented</a>
+            <a href="#what-absences-mean">What the Absences Tell Us</a>
+            <a href="#suggest">Suggest a Film</a>
+          </nav>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks. Built in collaboration between a human and Claude — Anthropic's AI. Not an authoritative verdict. A principled starting point for arguments.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="decades.html">By Decade</a>
+        <a href="genres.html">By Genre</a>
+        <a href="contested.html">Most Contested</a>
+        <a href="blindspots.html">Blind Spots</a>
+        <a href="content.html">No Legacy</a>
+        <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://x.com/cjk_1983" target="_blank">@cjk_1983</a>. Not an Anthropic product.</span>
+      <span class="footer-credit"><a href="https://czkelly1983.github.io/noguiltypleasures/" target="_blank">No Guilty Pleasures — British Music</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
