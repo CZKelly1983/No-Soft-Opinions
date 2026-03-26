@@ -199,7 +199,9 @@
       .then(films => {
         const top10 = films.slice(0, 10);
         const grid = document.getElementById('top-ten-grid');
-        grid.innerHTML = top10.map((f, i) => `
+        const display = top10.slice(0, 9);
+        const tenth = top10[9];
+        grid.innerHTML = display.map((f, i) => `
           <a href="ranking.html#film-${f.id}" class="top-ten-item">
             <div class="top-ten-rank ${i < 3 ? 'top-three' : ''}">${i + 1}</div>
             <div class="top-ten-info">
@@ -207,8 +209,18 @@
               <div class="top-ten-meta">${f.year} · ${f.genre}</div>
             </div>
             <div class="top-ten-score">${f.final_score}</div>
-          </a>
-        `).join('');
+          </a>`).join('')
+          + `<a href="ranking.html" class="top-ten-item" style="grid-column: 1 / -1; justify-content: space-between; border-top: 1px solid var(--border); background: var(--surface-2);">
+            <div style="display:flex; align-items:center; gap:1rem;">
+              <div class="top-ten-rank">${10}</div>
+              <div class="top-ten-info">
+                <div class="top-ten-title">${tenth.title}</div>
+                <div class="top-ten-meta">${tenth.year} · ${tenth.genre}</div>
+              </div>
+              <div class="top-ten-score">${tenth.final_score}</div>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); white-space:nowrap;">See all 1,104 films →</div>
+          </a>`;
       })
       .catch(() => {
         document.getElementById('top-ten-grid').innerHTML =
