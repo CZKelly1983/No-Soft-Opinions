@@ -171,13 +171,28 @@
   }
 
   // ── Render expanded film detail ────────────────────────────
+  // Map raw D1 flag notes to readable text
+  function d1NoteText(raw, score) {
+    if (!raw) return 'Box office performance, inflation-adjusted.';
+    const trimmed = raw.trim();
+    // If it's just a flag letter, replace with score-contextual text
+    const flags = { 'H': null, 'M': null, 'L': null, 'P-C': null, 'P-L': null };
+    if (trimmed in flags) {
+      if (score >= 75) return 'Strong box office performer. Score is inflation-adjusted for era.';
+      if (score >= 50) return 'Moderate box office performance. Score is inflation-adjusted for era.';
+      return 'Limited box office reach. Score is inflation-adjusted for era.';
+    }
+    // Otherwise use the actual note (it's descriptive)
+    return trimmed;
+  }
+
   function renderDetail(f) {
     const d = f.dimensions;
     const fw = f.frameworks;
     const gaps = f.gaps || {};
 
     const dims = [
-      { key: 'd1_box_office',           label: 'D1 — Box Office',            note: d.d1_note },
+      { key: 'd1_box_office',           label: 'D1 — Box Office',            note: d1NoteText(d.d1_note, d.d1_box_office) },
       { key: 'd2_audience_devotion',     label: 'D2 — Audience Devotion',     note: d.d2_note },
       { key: 'd3_critical_release',      label: 'D3 — Critical at Release',   note: d.d3_note },
       { key: 'd4_critical_now',          label: 'D4 — Critical Now',          note: d.d4_note },
