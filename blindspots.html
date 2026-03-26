@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institutional Blind Spots — No Soft Opinions: Cinema</title>
+  <meta name="description" content="Films where the Filmmaker's Film score dramatically exceeds the Popular Verdict. What film culture prizes that most audiences have never encountered.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html" class="active">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html" class="active">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">Institutional Blind Spots</span>
+        <h1 class="page-title">What Film Culture Sees<br>That Audiences Don't</h1>
+        <p class="page-subtitle">Films where the Filmmaker's Film score (F2) significantly exceeds the Popular Verdict (F1). The gap measures a specific kind of cultural disconnect — films the industry prizes, that filmmakers study, that critics rank among the greatest ever made, but that most audiences have never seen or thought about. These are not obscure failures. They are the films that shaped cinema invisibly.</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div id="blindspots-container">
+        <div class="loading">Loading blind spots…</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>.</span>
+    </div>
+  </footer>
+
+  <script src="blindspots.js"></script>
+</body>
+</html>

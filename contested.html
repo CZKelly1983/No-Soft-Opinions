@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Most Contested — No Soft Opinions: Cinema</title>
+  <meta name="description" content="The films where the three frameworks disagree most. High volatility index — where popular verdict, filmmaker consensus, and the long view point in different directions.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html" class="active">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html" class="active">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">Framework Disagreement</span>
+        <h1 class="page-title">Most Contested</h1>
+        <p class="page-subtitle">Where F1, F2, and F3 diverge most sharply. The volatility index measures the spread between the three framework scores. These gaps are not errors — they are the most honest thing in the index. A high volatility score means the three philosophical positions on cinematic value genuinely disagree about this film.</p>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <!-- Gap direction filter -->
+      <div class="filters-bar" style="margin-bottom:2rem;">
+        <div class="filter-group">
+          <label class="filter-label">Gap Direction</label>
+          <select class="filter-select" id="gap-filter">
+            <option value="volatility">All — by volatility index</option>
+            <option value="f2_minus_f1">Filmmaker over Popular (F2 &gt; F1)</option>
+            <option value="f1_minus_f2">Popular over Filmmaker (F1 &gt; F2)</option>
+            <option value="f3_minus_f1">Long View over Popular (F3 &gt; F1)</option>
+            <option value="f1_minus_f3">Popular over Long View (F1 &gt; F3)</option>
+            <option value="f3_minus_f2">Long View over Filmmaker (F3 &gt; F2)</option>
+            <option value="f2_minus_f3">Filmmaker over Long View (F2 &gt; F3)</option>
+          </select>
+        </div>
+        <div class="filter-count" id="contested-count"></div>
+      </div>
+
+      <div id="contested-container">
+        <div class="loading">Loading contested films…</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>.</span>
+    </div>
+  </footer>
+
+  <script src="contested.js"></script>
+</body>
+</html>

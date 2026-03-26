@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content But No Legacy — No Soft Opinions: Cinema</title>
+  <meta name="description" content="Films that dominated their moment — high Popular Verdict — but whose Long View score tells a different story. The films that were everywhere and then weren't.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html" class="active">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html" class="active">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">Popular Verdict vs The Long View</span>
+        <h1 class="page-title">Content But No Legacy</h1>
+        <p class="page-subtitle">Films where the Popular Verdict (F1) significantly exceeds the Long View score (F3). These films dominated their moment — commercially, culturally, conversationally. The index's Long View framework asks a harder question: are they still mattering? The gap between F1 and F3 is the measure of a film that was everywhere and then, quietly, wasn't.</p>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:1.25rem 1.5rem; margin-bottom:2rem; max-width:65ch;">
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.7; margin:0;">
+          <span style="color:var(--gold); font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.5rem;">A note on interpretation</span>
+          A high F1/F3 gap does not mean these are bad films. It means the conditions that made them popular — the franchise moment, the cultural event, the summer spectacle — have not translated into the kind of lasting critical or cultural presence the Long View framework measures. Some of them may yet. The 2010s films on this list are still early in that process.
+        </p>
+      </div>
+
+      <div id="content-container">
+        <div class="loading">Loading films…</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>.</span>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+</body>
+</html>
