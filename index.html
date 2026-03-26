@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Soft Opinions — Cinema</title>
+  <meta name="description" content="1,104 films. Three questions about value. No soft opinions. A human-AI collaborative ranking of cinema across seven dimensions and three philosophical frameworks.">
+  <meta property="og:title" content="No Soft Opinions — Cinema">
+  <meta property="og:description" content="1,104 films. Three questions about value. No soft opinions.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html" class="active">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Cinema · 1921–2025</div>
+        <h1 class="hero-title">No<br>Soft<br><em>Opinions</em></h1>
+        <p class="hero-tagline">1,104 films. Three questions about value. No soft opinions.</p>
+        <div class="hero-ctas">
+          <a href="ranking.html" class="btn btn-primary">View the Full Ranking →</a>
+          <a href="about.html" class="btn btn-secondary">How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="container">
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-value" id="stat-films">1,104</div>
+          <div class="stat-label">Films Ranked</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">100+</div>
+          <div class="stat-label">Years of Cinema</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Dimensions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Frameworks</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">18</div>
+          <div class="stat-label">Genres</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP TEN -->
+    <section class="container mb-4">
+      <span class="section-label">The Summit</span>
+      <h2 class="section-title">The Top Ten</h2>
+      <p class="section-intro">Averaged across three frameworks. No single philosophical stance dominates. An act must score across all three to rank here.</p>
+      <div class="top-ten-grid" id="top-ten-grid">
+        <div class="loading">Loading rankings…</div>
+      </div>
+      <div class="mt-3">
+        <a href="ranking.html" class="btn btn-secondary">See all 1,104 films →</a>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- FRAMEWORK EXPLAINER -->
+    <section class="container mb-4">
+      <span class="section-label">The Method</span>
+      <h2 class="section-title">Three Questions About Value</h2>
+      <p class="section-intro">Every film is scored across seven dimensions, then run through three differently weighted frameworks — each representing a genuine philosophical position on what cinematic value means. The final score is the average of all three.</p>
+      <div class="framework-cards">
+        <div class="framework-card">
+          <div class="framework-card-id f1">F1 — Popular Verdict</div>
+          <div class="framework-card-title">What did audiences decide?</div>
+          <p class="framework-card-desc">Box office, audience devotion, and cultural footprint carry the most weight. The film the public chose, returned to, and made part of the culture.</p>
+          <div class="framework-card-example">Star Wars scores highest here. Jeanne Dielman does not.</div>
+        </div>
+        <div class="framework-card">
+          <div class="framework-card-id f2">F2 — Filmmaker's Film</div>
+          <div class="framework-card-title">What do filmmakers think?</div>
+          <p class="framework-card-desc">Filmmaker influence and critical reception at release lead. The films that changed how cinema gets made — regardless of whether audiences noticed.</p>
+          <div class="framework-card-example">Jeanne Dielman scores highest here. Transformers does not.</div>
+        </div>
+        <div class="framework-card">
+          <div class="framework-card-id f3">F3 — The Long View</div>
+          <div class="framework-card-title">What does history decide?</div>
+          <p class="framework-card-desc">Critical reassessment and longevity trajectory dominate. Not what the film meant in its moment, but what it means now — and whether that's rising or falling.</p>
+          <div class="framework-card-example">2001: A Space Odyssey scores highest here. Avatar does not.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- TEASERS: CONTESTED + BLIND SPOTS -->
+    <section class="container mb-4">
+      <div class="grid-2">
+        <div>
+          <span class="section-label">Most Contested</span>
+          <h2 class="section-title">Where the Frameworks Disagree</h2>
+          <p class="section-intro">The films where F1, F2, and F3 diverge most sharply. The gaps aren't errors — they're the most honest thing in the index.</p>
+          <a href="contested.html" class="btn btn-secondary">See most contested →</a>
+        </div>
+        <div>
+          <span class="section-label">Institutional Blind Spots</span>
+          <h2 class="section-title">What Film Culture Sees That Audiences Don't</h2>
+          <p class="section-intro">Films where the Filmmaker's Film score dramatically exceeds the Popular Verdict. The films the industry prizes that most audiences have never seen.</p>
+          <a href="blindspots.html" class="btn btn-secondary">See blind spots →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- WHY I BUILT THIS -->
+    <section class="container mb-4">
+      <span class="section-label">Why This Exists</span>
+      <h2 class="section-title">A Note on the Project</h2>
+      <div style="max-width: 65ch;">
+        <p style="font-size:0.95rem; line-height:1.8; color:var(--text-secondary); margin-bottom:1rem;">
+          I built this because I was dissatisfied with what AI does when asked a simple question. Type "what's the greatest film of all time" into any AI and you get an answer — confident, pre-formed, essentially unchallengeable because there's no visible reasoning to push against.
+        </p>
+        <p style="font-size:0.95rem; line-height:1.8; color:var(--text-secondary); margin-bottom:1.5rem;">
+          The cinema project came from a deeper dissatisfaction than that. I didn't just want to ask the question better. I wanted to sit with the question long enough to find out whether it was the right question at all.
+        </p>
+        <a href="about.html" class="btn btn-secondary">Read the full story →</a>
+      </div>
+    </section>
+
+  </div><!-- end page-wrapper -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks. Built in collaboration between a human and Claude — Anthropic's AI. Not an authoritative verdict. A principled starting point for arguments.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="decades.html">By Decade</a>
+        <a href="genres.html">By Genre</a>
+        <a href="contested.html">Most Contested</a>
+        <a href="blindspots.html">Blind Spots</a>
+        <a href="content.html">No Legacy</a>
+        <a href="about.html">About & Methodology</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>. Not an Anthropic product.</span>
+      <span class="footer-credit">Also: <a href="https://czkelly1983.github.io/noguiltypleasures/" target="_blank">No Guilty Pleasures — British Music</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Load top ten from data file
+    fetch('films.json')
+      .then(r => r.json())
+      .then(films => {
+        const top10 = films.slice(0, 10);
+        const grid = document.getElementById('top-ten-grid');
+        grid.innerHTML = top10.map((f, i) => `
+          <a href="ranking.html#film-${f.id}" class="top-ten-item">
+            <div class="top-ten-rank ${i < 3 ? 'top-three' : ''}">${i + 1}</div>
+            <div class="top-ten-info">
+              <div class="top-ten-title">${f.title}</div>
+              <div class="top-ten-meta">${f.year} · ${f.genre}</div>
+            </div>
+            <div class="top-ten-score">${f.final_score}</div>
+          </a>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('top-ten-grid').innerHTML =
+          '<div class="loading">Could not load ranking data.</div>';
+      });
+  </script>
+
+</body>
+</html>

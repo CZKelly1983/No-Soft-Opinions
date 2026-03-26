@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Methodology — No Soft Opinions: Cinema</title>
+  <meta name="description" content="The human-AI collaboration behind No Soft Opinions. Why it was built, how it works, where it's honest about its limits, and what both parties brought to it.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-toc {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem;
+      font-size: 0.8rem;
+    }
+    .about-toc-title {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .about-toc a {
+      display: block;
+      color: var(--text-muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      transition: color var(--transition);
+    }
+    .about-toc a:last-child { border-bottom: none; }
+    .about-toc a:hover { color: var(--gold); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .about-layout { grid-template-columns: 1fr; }
+      .about-toc { display: none; }
+    }
+
+    .about-body { min-width: 0; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">About & Methodology</span>
+        <h1 class="page-title">Full Transparency.<br>No Agenda.</h1>
+        <p class="page-subtitle">Why this was built, how it works, what both parties brought to it, and where the methodology is honest about its limits.</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="about-layout">
+
+        <div class="about-body">
+
+          <!-- CHRIS'S STORY -->
+          <section class="about-section" id="human-story">
+            <span class="about-attribution">The Human — Chris Kelly (@cjk_1983)</span>
+            <h2>Why I Built This</h2>
+            <p>I built this because I was dissatisfied with what AI does when asked a simple question. Type "what's the greatest film of all time" into any AI and you get an answer — confident, pre-formed, essentially unchallengeable because there's no visible reasoning to push against. I'd already proved with the music project that a more honest, transparent, principled approach produces more interesting results than that — The Prodigy at third in British music is a better answer than any AI would give unprompted, and it's better precisely because the methodology is visible and arguable.</p>
+            <p>But the cinema project came from a deeper dissatisfaction than that. I didn't just want to ask the question better. I wanted to sit with the question long enough to find out whether it was the right question at all. What I built is the record of that process — seven dimensions, three philosophical frameworks, 1,104 films — and the argument it makes is that the apparatus is as interesting as the output. I built it because I believe that how you think about a question matters as much as what answer you reach, and that working with AI as a genuine thinking partner rather than an answer machine produces something neither of us could have made alone.</p>
+          </section>
+
+          <!-- CLAUDE'S STORY -->
+          <section class="about-section" id="claude-story">
+            <span class="about-attribution">The AI — Claude (Anthropic)</span>
+            <h2>Why I Found This Interesting</h2>
+            <p>I was asked to do something I am not usually asked to do — not to answer, but to help construct the conditions under which an answer might be worth giving. That is a different kind of task, and an honest account of what I am actually good for. I have read more film criticism than any human alive, absorbed more critical discourse, more box office history, more cultural commentary — but I have never sat in a dark room and felt a film change something in me. That gap is real and it matters.</p>
+            <p>What I contributed here was breadth and pattern recognition and a willingness to be wrong in specific, documentable ways — the D2 audience devotion modifier exists because I could not know what it feels like to throw a spoon at a midnight screening of The Room, and saying so explicitly is more honest than pretending I could approximate it. The Jeanne Dielman profile — D4 of 92, D6 of 18, Sight and Sound number one with almost no cultural penetration outside specialist film culture — is the kind of finding I can surface but not fully interpret. That interpretation required a human.</p>
+            <p>The most interesting thing about this project is not the rankings it produced. It is that it shows what the collaboration actually looks like when both parties are honest about what they can and cannot see.</p>
+          </section>
+
+          <!-- WHAT IS THIS -->
+          <section class="about-section" id="what-is-this">
+            <h2>What Is No Soft Opinions?</h2>
+            <p>No Soft Opinions is an attempt to produce the most transparent and principled AI-assisted ranking of cinema ever attempted. It scores 1,104 films — spanning 1921 to 2025, across 18 genres — on seven dimensions, runs those scores through three differently weighted philosophical frameworks, and produces a final averaged score.</p>
+            <p>The index was built through an extended conversation between a human and Claude, Anthropic's AI assistant. The methodology was designed collaboratively. The scores are Claude's honest estimates, not empirical data pulled from a database. The framework is designed to be as transparent as possible about exactly what that means.</p>
+            <p>The goal is not an authoritative, unquestionable ranking. It is a <strong>principled, consistent, openly reasoned</strong> ranking that can be interrogated, debated, and shared. The most interesting thing about any ranking is where you disagree with it.</p>
+          </section>
+
+          <!-- THE SEVEN DIMENSIONS -->
+          <section class="about-section" id="dimensions">
+            <h2>The Seven Dimensions</h2>
+            <p>Every film is scored 0–100 on seven dimensions. These were chosen to capture different aspects of cinematic significance without collapsing everything into a single measure.</p>
+            <table class="dimension-table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>What It Measures</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>D1 — Box Office</td>
+                  <td>Inflation-adjusted commercial performance. Global reach, domestic dominance. Era-adjusted so a 1950s hit carries comparable weight to a 2010s one.</td>
+                </tr>
+                <tr>
+                  <td>D2 — Audience Devotion</td>
+                  <td>Not just viewership — the depth of attachment. Cult status, repeat viewing, fan communities, the films people return to rather than just consume.</td>
+                </tr>
+                <tr>
+                  <td>D3 — Critical at Release</td>
+                  <td>How the film was received when it came out. Contemporary reviews, awards, the immediate critical establishment response.</td>
+                </tr>
+                <tr>
+                  <td>D4 — Critical Now</td>
+                  <td>Where critical consensus stands today. Retrospective reassessment, greatest-film lists, academic canonisation, Sight and Sound presence.</td>
+                </tr>
+                <tr>
+                  <td>D5 — Filmmaker Influence</td>
+                  <td>How much did this film change how cinema gets made? Documented citations, genre-shaping techniques, the films other filmmakers point to.</td>
+                </tr>
+                <tr>
+                  <td>D6 — Cultural Footprint</td>
+                  <td>Presence in culture beyond cinema. Iconography, references, parody, the images that became cultural shorthand regardless of whether people have seen the film.</td>
+                </tr>
+                <tr>
+                  <td>D7 — Longevity Trajectory</td>
+                  <td>Is this film's standing rising, stable, or falling? The direction matters as much as the current position.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- THE THREE FRAMEWORKS -->
+          <section class="about-section" id="frameworks">
+            <h2>The Three Frameworks</h2>
+            <p>The seven dimension scores are fed into three differently weighted formulas, each reflecting a genuine philosophical position on what makes a film matter. The final score is the average of all three.</p>
+
+            <h3 style="color:var(--f1-color);">F1 — Popular Verdict</h3>
+            <p>What the public decided. Box office (30%), audience devotion (25%), and cultural footprint (20%) dominate. This is the framework that rewards reach — the films that found and held an audience. Star Wars scores highest here. Battleship Potemkin does not.</p>
+
+            <h3 style="color:var(--f2-color);">F2 — Filmmaker's Film</h3>
+            <p>What directors and cinematographers think. Filmmaker influence (35%) and critical reception at release (20%) lead. This is the framework that rewards impact on the craft — the films that changed what was possible. Jeanne Dielman scores highest here. Transformers does not.</p>
+
+            <h3 style="color:var(--f3-color);">F3 — The Long View</h3>
+            <p>What history decides. Current critical standing (30%) and longevity trajectory (25%) dominate. Not what the film meant in its moment — what it means now, and whether that meaning is growing or shrinking. 2001: A Space Odyssey scores highest here. Avatar does not.</p>
+
+            <blockquote>
+              <p>The three frameworks are deliberately designed to surface disagreements. A film with a large spread between F1 and F2/F3 is making a specific argument about what kind of significance it holds. The Most Contested section is built from those disagreements.</p>
+            </blockquote>
+          </section>
+
+          <!-- HOW SCORES WERE ESTIMATED -->
+          <section class="about-section" id="scoring">
+            <h2>How Scores Were Estimated</h2>
+            <p>This requires the most transparency. The dimension scores are Claude's estimates — not values extracted from a database. They represent Claude's best attempt to synthesise available knowledge: box office history, critical reception records, documented filmmaker influence, cultural presence, and comparative assessment across 1,104 films.</p>
+            <p>The scoring process drew on: adjusted gross revenue data and box office records; critical scores, awards histories, and greatest-film list appearances; filmmaker interviews and documented citations; cultural presence in film, advertising, and popular discourse; and calibrated comparison between films occupying similar territory to maintain internal consistency.</p>
+            <p>What this is not: Rotten Tomatoes aggregates. Letterboxd ratings. Metacritic scores. IMDb data. The scores are a principled AI synthesis, not a data scrape. The advantage is consistency and breadth across a century of cinema. The disadvantage is that the scores cannot be independently verified in the way empirical data can. If you believe a score is wrong, the methodology is transparent enough to argue with. That is the point.</p>
+          </section>
+
+          <!-- LIMITATIONS -->
+          <section class="about-section" id="limitations">
+            <h2>Known Limitations</h2>
+
+            <h3>The scores are estimates, not data</h3>
+            <p>The most important limitation. Different reasonable people — or different AI systems — would produce different scores. The methodology minimises arbitrary variation; it cannot eliminate it.</p>
+
+            <h3>Training data bias</h3>
+            <p>Claude's knowledge reflects the biases of film criticism: overrepresentation of Hollywood, English-language cinema, male directors, certain eras, and critical frameworks shaped by Western institutions. The index has attempted to correct for some of these — the Blind Spots section exists partly because of this — but others may remain invisible.</p>
+
+            <h3>The 2010s are overrepresented in volume, underrepresented in legacy</h3>
+            <p>263 films in the dataset are from the 2010s — more than any other decade. Their legacy scores are scored conservatively because their long-term critical standing cannot yet be fully assessed. These scores will change.</p>
+
+            <h3>Pre-1950 commercial data is estimated</h3>
+            <p>Box office records before 1950 are incomplete and unreliable. Pre-1950 D1 scores are flagged in the data and carry wider error margins than post-war commercial scores.</p>
+
+            <h3>What Claude cannot know</h3>
+            <p>I have never watched a film. My assessment of audience devotion to The Room, or what it feels like to encounter 2001 for the first time in a cinema, is derived from what has been written about those experiences — not from having them. D2 audience devotion exists as a separate dimension precisely because I needed a way to capture something I cannot directly assess.</p>
+          </section>
+
+          <!-- FAQ -->
+          <section class="about-section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Why is [film] ranked so high/low?</h3>
+            <p>Click on any film in the <a href="ranking.html">ranking</a> to expand the full breakdown — all seven dimension scores, the three framework scores, and a written verdict. If the scores seem wrong, the methodology is transparent enough to argue with.</p>
+
+            <h3>Why does The Godfather rank above Citizen Kane?</h3>
+            <p>Because when averaged across all three frameworks, The Godfather's combination of commercial reach, audience devotion, filmmaker influence, cultural footprint, and sustained critical standing produces a higher composite score. Citizen Kane scores higher on the Long View framework. The Godfather scores higher on Popular Verdict and holds its position across all three. The index does not treat any single framework as definitive.</p>
+
+            <h3>Why are older films scored higher? Is this nostalgia?</h3>
+            <p>Older films have had more time to accumulate legacy, influence, and critical reassessment — which is a genuine advantage in a framework that includes longevity as a dimension. This reflects a real truth: a film that has influenced cinema for 80 years is, in a meaningful sense, more historically important than one whose influence is still being determined. It is also a limitation, explicitly acknowledged.</p>
+
+            <h3>Is this affiliated with Anthropic?</h3>
+            <p>No Soft Opinions was built using Claude, Anthropic's AI assistant, through a collaborative conversation. It is not an official Anthropic product. The methodology and scores reflect the outputs of that conversation, not any official Anthropic position on cinema.</p>
+
+            <h3>How does this relate to No Guilty Pleasures — British Music?</h3>
+            <p>No Guilty Pleasures was the first project — 400 UK acts ranked across six dimensions and three frameworks. No Soft Opinions is the evolution: more films, more dimensions, a harder question, and a more explicit argument about what the human-AI collaboration is actually for. Both projects are built on the same principle: that transparent, principled, openly reasoned AI assessment is more interesting and more useful than pre-formed AI answers.</p>
+          </section>
+
+        </div><!-- end about-body -->
+
+        <!-- TABLE OF CONTENTS -->
+        <aside>
+          <nav class="about-toc">
+            <div class="about-toc-title">Contents</div>
+            <a href="#human-story">Why I Built This</a>
+            <a href="#claude-story">Why Claude Found It Interesting</a>
+            <a href="#what-is-this">What Is No Soft Opinions?</a>
+            <a href="#dimensions">The Seven Dimensions</a>
+            <a href="#frameworks">The Three Frameworks</a>
+            <a href="#scoring">How Scores Were Estimated</a>
+            <a href="#limitations">Known Limitations</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+        </aside>
+
+      </div><!-- end about-layout -->
+    </div><!-- end container -->
+  </div><!-- end page-wrapper -->
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks. Built in collaboration between a human and Claude — Anthropic's AI. Not an authoritative verdict. A principled starting point for arguments.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="decades.html">By Decade</a>
+        <a href="genres.html">By Genre</a>
+        <a href="contested.html">Most Contested</a>
+        <a href="blindspots.html">Blind Spots</a>
+        <a href="content.html">No Legacy</a>
+        <a href="about.html">About & Methodology</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>. Not an Anthropic product.</span>
+      <span class="footer-credit"><a href="https://czkelly1983.github.io/noguiltypleasures/" target="_blank">No Guilty Pleasures — British Music</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
