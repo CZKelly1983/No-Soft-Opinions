@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Institutional Blind Spots — No Soft Opinions: Cinema</title>
-  <meta name="description" content="Films where the Filmmaker's Film score dramatically exceeds the Popular Verdict. What film culture prizes that most audiences have never encountered.">
+  <title>Peaked &amp; Faded — No Soft Opinions: Cinema</title>
+  <meta name="description" content="Films that dominated their moment — high Popular Verdict — but whose Long View score tells a different story. The films that were everywhere and then weren't.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,8 +21,8 @@
         <li><a href="decades.html">By Decade</a></li>
         <li><a href="genres.html">By Genre</a></li>
         <li><a href="contested.html">Most Contested</a></li>
-        <li><a href="blindspots.html" class="active">Blind Spots</a></li>
-        <li><a href="peaked-faded.html">Peaked &amp; Faded</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="peaked-faded.html" class="active">Peaked &amp; Faded</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
@@ -36,24 +36,34 @@
     <a href="decades.html">By Decade</a>
     <a href="genres.html">By Genre</a>
     <a href="contested.html">Most Contested</a>
-    <a href="blindspots.html" class="active">Blind Spots</a>
-    <a href="peaked-faded.html">Peaked &amp; Faded</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="peaked-faded.html" class="active">Peaked &amp; Faded</a>
     <a href="about.html">About</a>
   </div>
 
   <div class="page-wrapper">
     <header class="page-header">
       <div class="page-header-inner">
-        <span class="page-label">Institutional Blind Spots</span>
-        <h1 class="page-title">What Film Culture Sees<br>That Audiences Don't</h1>
-        <p class="page-subtitle">Films where the Filmmaker's Film score (F2) significantly exceeds the Popular Verdict (F1). The gap measures a specific kind of cultural disconnect — films the industry prizes, that filmmakers study, that critics rank among the greatest ever made, but that most audiences have never seen or thought about. These are not obscure failures. They are the films that shaped cinema invisibly.</p>
+        <span class="page-label">Popular Verdict vs The Long View</span>
+        <h1 class="page-title">Peaked &amp; Faded</h1>
+        <p style="font-family:var(--font-display); font-size:1.1rem; font-style:italic; color:var(--text-muted); margin-top:0.25rem;">Films that dominated their moment. The question is whether they lasted.</p>
+        <p class="page-subtitle">Films where the Popular Verdict (F1) significantly exceeds the Long View score (F3). These films dominated their moment — commercially, culturally, conversationally. The index's Long View framework asks a harder question: are they still mattering? The gap between F1 and F3 is the measure of a film that was everywhere and then, quietly, wasn't.</p>
       </div>
     </header>
 
     <div class="container">
-      <div id="blindspots-container">
-        <div class="loading">Loading blind spots…</div>
+
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:1.25rem 1.5rem; margin-bottom:2rem; max-width:65ch;">
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.7; margin:0;">
+          <span style="color:var(--gold); font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.5rem;">A note on interpretation</span>
+          A high F1/F3 gap does not mean these are bad films. It means the conditions that made them popular — the franchise moment, the cultural event, the summer spectacle — have not translated into the kind of lasting critical or cultural presence the Long View framework measures. Some of them may yet. The 2010s films on this list are still early in that process.
+        </p>
       </div>
+
+      <div id="content-container">
+        <div class="loading">Loading films…</div>
+      </div>
+
     </div>
   </div>
 
@@ -76,6 +86,6 @@
     </div>
   </footer>
 
-  <script src="blindspots.js"></script>
+  <script src="peaked-faded.js"></script>
 </body>
 </html>
