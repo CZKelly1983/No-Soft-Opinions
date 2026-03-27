@@ -437,7 +437,7 @@
           <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); line-height:1.8;">
             <div>Year: ${f.year} · Decade: ${f.decade}</div>
             <div>Genre: ${escHtml(f.genre)}</div>
-            <div>Overall Rank: #${f.rank} of 1,104</div>
+            <div>Overall Rank: #${f.rank} of 1,178</div>
           </div>
         </div>
 
