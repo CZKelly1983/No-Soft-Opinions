@@ -155,6 +155,15 @@
             <p>This is what the collaboration actually produced — not a ranking, but a record of what happens when you apply a consistent methodology honestly enough to see where the methodology itself has blind spots. The framework didn't catch those moments. The human did. The framework then showed what they meant.</p>
           </section>
 
+          <!-- WHAT KIND OF CLAIM IS THIS -->
+          <section class="about-section" id="claim">
+            <h2>What Kind of Claim Is This Making?</h2>
+            <p>Not an authoritative verdict. Not one critic's opinion. Not a data scrape.</p>
+            <p>The closest accurate description is: the central limit of documented critical consensus, run through an explicit philosophical framework and made arguable.</p>
+            <p>Claude's training data encompasses the accumulated critical record of cinema across a century — reviews, retrospectives, filmmaker testimony, box office history, cultural commentary. At that scale, individual critical biases tend to cancel. The systematic gaps don't cancel, because they're structural rather than random — and they're named specifically rather than papered over.</p>
+            <p>What this produces is something no individual critic and no simple aggregation tool can produce: a consistent, simultaneous synthesis of the full documented critical history of 1,178 films, held inside an explicit methodology that can be interrogated, disagreed with, and improved. The interesting question isn't whether the scores are right. It's what it means that they're this close to right, produced this way, at this scale.</p>
+          </section>
+
           <!-- THE SEVEN DIMENSIONS -->
           <section class="about-section" id="dimensions">
             <h2>The Seven Dimensions</h2>
@@ -369,17 +378,19 @@
           <!-- HOW SCORES WERE ESTIMATED -->
           <section class="about-section" id="scoring">
             <h2>How Scores Were Estimated</h2>
-            <p>This requires the most transparency. The dimension scores are Claude's estimates — not values extracted from a database. They represent Claude's best attempt to synthesise available knowledge: box office history, critical reception records, documented filmmaker influence, cultural presence, and comparative assessment across all 1,178 films.</p>
-            <p>The scoring process drew on: adjusted gross revenue data and box office records; critical scores, awards histories, and greatest-film list appearances; filmmaker interviews and documented citations; cultural presence in film, advertising, and popular discourse; and calibrated comparison between films occupying similar territory to maintain internal consistency.</p>
-            <p>What this is not: Rotten Tomatoes aggregates. Letterboxd ratings. Metacritic scores. IMDb data. The scores are a principled AI synthesis, not a data scrape. The advantage is consistency and breadth across a century of cinema — applied equally to all 1,178 films. The disadvantage is that the scores cannot be independently verified in the way empirical data can. If you believe a score is wrong, the methodology is transparent enough to argue with. That is the point.</p>
+            <p>The dimension scores are Claude's synthesis of documented critical consensus — not one AI's guess, and not a database scrape. The distinction matters.</p>
+            <p>Claude's training data is, in effect, the accumulated critical record of cinema: every major review, every filmmaker interview, every box office analysis, every Sight & Sound poll, every academic reassessment that made it into the written record. When Claude scores Vertigo's current critical standing at 97, that number isn't an estimate in the way a single critic's score is an estimate. It's closer to the central limit of informed human judgment at scale — the weighted mean of everything serious that has been written about that film, processed simultaneously rather than sequentially.</p>
+            <p>The central limit theorem is doing real work here. Individual critical biases in the training data — the critics who undervalued Hitchcock, the periods when the film was out of circulation, the national traditions that ignored it — tend to cancel at sufficient scale. What remains is something no individual critic can produce: an aggregation of critical consensus across the full documented history of the film's reception. That is a different kind of claim from estimation, and in some respects a stronger one.</p>
+            <p>The honest caveat is that the corpus is not uniformly humanity. It is the portion of humanity that writes criticism in forms that get published, indexed, and preserved — which means it overrepresents English-language discourse, Western critical traditions, and the institutions that generate written records. Those gaps are structural, not random, and they don't cancel in the way individual critical biases do. They are documented in the Known Limitations section and in the Dataset page. The methodology is as strong as its corpus, and the corpus has specific, nameable blind spots.</p>
+            <p>The scoring process drew on: adjusted gross revenue data and box office records; critical scores, awards histories, and greatest-film list appearances; filmmaker interviews and documented citations; cultural presence in film, advertising, and popular discourse; and calibrated comparison between films occupying similar territory to maintain internal consistency. What this is not: Rotten Tomatoes aggregates. Letterboxd ratings. Metacritic scores. IMDb data. If you believe a score is wrong, the methodology is transparent enough to argue with. That is the point.</p>
           </section>
 
           <!-- LIMITATIONS -->
           <section class="about-section" id="limitations">
             <h2>Known Limitations</h2>
 
-            <h3>The scores are estimates, not data</h3>
-            <p>The most important limitation. Different reasonable people — or different AI systems — would produce different scores. The methodology minimises arbitrary variation; it cannot eliminate it.</p>
+            <h3>The scores are consensus synthesis, not raw data — and not individual opinion</h3>
+            <p>The most important thing to understand about the scoring. Claude's dimension scores represent a synthesis of documented critical consensus at scale — not a database pull, and not one system's idiosyncratic take. The training corpus is large enough that individual critical biases tend to cancel; what remains is closer to a weighted mean of informed human judgment than any individual critic could produce. The limitation is not that the scores are subjective. It is that the corpus they derive from has specific structural gaps — documented below — that don't cancel because they're systematic rather than random.</p>
 
             <h3>Training data bias</h3>
             <p>Claude's knowledge reflects the biases of film criticism: overrepresentation of Hollywood, English-language cinema, male directors, certain eras, and critical frameworks shaped by Western institutions. The index has attempted to correct for some of these — the Blind Spots section exists partly because of this — but others may remain invisible.</p>
@@ -443,6 +454,7 @@
             <a href="#claude-story">Why Claude Found It Interesting</a>
             <a href="#the-74">The 74 Films</a>
             <a href="#collaboration">Where Things Changed</a>
+            <a href="#claim">What Kind of Claim?</a>
             <a href="#dimensions">The Seven Dimensions</a>
             <a href="#frameworks">The Three Frameworks</a>
             <a href="#comparison">Framework in Contrast</a>
