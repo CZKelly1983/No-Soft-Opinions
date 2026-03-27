@@ -22,11 +22,16 @@
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="ranking.html">The Ranking</a></li>
-        <li><a href="decades.html">By Decade</a></li>
-        <li><a href="genres.html">By Genre</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Explore</button>
+          <div class="nav-dropdown-menu">
+            <a href="decades.html">By Decade</a>
+            <a href="genres.html">By Genre</a>
+            <a href="peaked-faded.html">Peaked &amp; Faded</a>
+          </div>
+        </li>
         <li><a href="contested.html">Most Contested</a></li>
         <li><a href="blindspots.html">Blind Spots</a></li>
-        <li><a href="peaked-faded.html">Peaked &amp; Faded</a></li>
         <li><a href="dataset.html">Dataset</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
@@ -38,11 +43,12 @@
   <div class="nav-drawer" id="nav-drawer">
     <a href="index.html" class="active">Home</a>
     <a href="ranking.html">The Ranking</a>
-    <a href="decades.html">By Decade</a>
-    <a href="genres.html">By Genre</a>
+    <span style="display:block; padding:0.5rem 0 0.2rem; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold-dim); border-bottom:1px solid var(--border);">Explore</span>
+    <a href="decades.html" style="padding-left:1rem;">By Decade</a>
+    <a href="genres.html" style="padding-left:1rem;">By Genre</a>
+    <a href="peaked-faded.html" style="padding-left:1rem;">Peaked &amp; Faded</a>
     <a href="contested.html">Most Contested</a>
     <a href="blindspots.html">Blind Spots</a>
-    <a href="peaked-faded.html">Peaked &amp; Faded</a>
     <a href="dataset.html">Dataset</a>
     <a href="about.html">About</a>
   </div>
@@ -84,10 +90,10 @@
           <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--f2-color);">For the AI-Curious</div>
           <h3 style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--text-primary); line-height:1.2;">You want to see what genuine human-AI collaboration actually produces.</h3>
           <p style="font-size:0.88rem; line-height:1.75; color:var(--text-secondary);">
-            Not an AI answering a question. A human and an AI working out whether it was the right question at all. The methodology is fully visible. The failures are named specifically — pre-1991 animation was being scored against adult drama norms until the human caught it. The D2 devotion formula couldn't see what it means to throw a spoon at a midnight screening of The Room until the human flagged it. The 74 films the methodology missed entirely are listed, scored, and explained. The gaps are findings, not embarrassments.
+            Not an AI answering a question. A human and an AI working out whether it was the right question at all. The failures are named specifically — pre-1991 animation was scored against adult drama norms until the human caught it. Claude scored Casablanca's critical reception at release too high; the historical record shows a solid wartime entertainment, not an immediate masterpiece, and the score came down. The D2 devotion formula couldn't see what it means to throw a spoon at a midnight screening of The Room until the human flagged it. These aren't footnotes. They're documented in full, with the scores that changed.
           </p>
           <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:auto;">
-            <a href="about.html" class="btn btn-primary" style="width:fit-content;">Read the methodology →</a>
+            <a href="about.html#collaboration" class="btn btn-primary" style="width:fit-content;">See where things changed →</a>
             <a href="dataset.html" class="btn btn-secondary" style="width:fit-content;">See what the dataset can't see →</a>
           </div>
         </div>
@@ -240,6 +246,10 @@
           <div style="margin-top:0.25rem;"><a href="dataset.html" style="font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--gold-dim); text-transform:uppercase;">Why they were missed →</a></div>
         </div>
         <div class="stat-item">
+          <div class="stat-value">1,178</div>
+          <div class="stat-label">Total Films Ranked</div>
+        </div>
+        <div class="stat-item">
           <div class="stat-value">104</div>
           <div class="stat-label">Years of Cinema</div>
         </div>
@@ -251,11 +261,8 @@
           <div class="stat-value">3</div>
           <div class="stat-label">Frameworks</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-value">18</div>
-          <div class="stat-label">Genres</div>
-        </div>
       </div>
+      <p style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-top:0.75rem; letter-spacing:0.02em;">1,104 films selected by cross-list methodology · 74 added by hand after the AI missed them · 1,178 total</p>
     </section>
 
   </div><!-- end page-wrapper -->

@@ -61,11 +61,16 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="ranking.html">The Ranking</a></li>
-        <li><a href="decades.html">By Decade</a></li>
-        <li><a href="genres.html">By Genre</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle">Explore</button>
+          <div class="nav-dropdown-menu">
+            <a href="decades.html">By Decade</a>
+            <a href="genres.html">By Genre</a>
+            <a href="peaked-faded.html">Peaked &amp; Faded</a>
+          </div>
+        </li>
         <li><a href="contested.html">Most Contested</a></li>
         <li><a href="blindspots.html">Blind Spots</a></li>
-        <li><a href="peaked-faded.html">Peaked &amp; Faded</a></li>
         <li><a href="dataset.html">Dataset</a></li>
         <li><a href="about.html" class="active">About</a></li>
       </ul>
@@ -77,11 +82,12 @@
   <div class="nav-drawer" id="nav-drawer">
     <a href="index.html">Home</a>
     <a href="ranking.html">The Ranking</a>
-    <a href="decades.html">By Decade</a>
-    <a href="genres.html">By Genre</a>
+    <span style="display:block; padding:0.5rem 0 0.2rem; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold-dim); border-bottom:1px solid var(--border);">Explore</span>
+    <a href="decades.html" style="padding-left:1rem;">By Decade</a>
+    <a href="genres.html" style="padding-left:1rem;">By Genre</a>
+    <a href="peaked-faded.html" style="padding-left:1rem;">Peaked &amp; Faded</a>
     <a href="contested.html">Most Contested</a>
     <a href="blindspots.html">Blind Spots</a>
-    <a href="peaked-faded.html">Peaked &amp; Faded</a>
     <a href="dataset.html">Dataset</a>
     <a href="about.html" class="active">About</a>
   </div>
