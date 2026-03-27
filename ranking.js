@@ -6,6 +6,9 @@
 (function () {
   'use strict';
 
+  // ── Global namespace — must be first ───────────────────────
+  window.NSO = window.NSO || {};
+
   // ── State ──────────────────────────────────────────────────
   let allFilms = [];
   let filtered = [];
@@ -435,7 +438,7 @@
   }
 
   // ── Toggle expanded row ────────────────────────────────────
-  window.NSO = window.NSO || {};
+  // ── Toggle expanded row ────────────────────────────────────
   window.NSO.toggleFilm = function (id) {
     const row = document.querySelector(`.film-row[data-id="${id}"]`);
     const detail = document.getElementById(`detail-${id}`);
