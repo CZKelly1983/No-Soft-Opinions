@@ -14,6 +14,106 @@
   let sortKey = 'final_score';
   let expandedId = null;
 
+  // ── Calculator state ───────────────────────────────────────
+  let calcActive = false;
+  let calcWeights = { d1:1, d2:1, d3:1, d4:1, d5:1, d6:1, d7:1 };
+
+  // Preset weight profiles matching the three frameworks
+  const PRESETS = {
+    equal:  { d1:1,  d2:1,  d3:1,  d4:1,  d5:1,  d6:1,  d7:1  },
+    // F1 Popular: D1 box office 30%, D2 devotion 25%, D6 cultural 20%, D3 critical release 10%, D4 critical now 5%, D5 influence 5%, D7 longevity 5%
+    f1:     { d1:6,  d2:5,  d3:2,  d4:1,  d5:1,  d6:4,  d7:1  },
+    // F2 Filmmaker: D5 influence 35%, D3 critical release 20%, D4 critical now 20%, D2 devotion 10%, D6 cultural 10%, D7 longevity 5%
+    f2:     { d1:0,  d2:2,  d3:4,  d4:4,  d5:7,  d6:2,  d7:1  },
+    // F3 Long View: D4 critical now 30%, D7 longevity 25%, D5 influence 20%, D6 cultural 15%, D1 box office 5%, D2 devotion 5%
+    f3:     { d1:1,  d2:1,  d3:0,  d4:6,  d5:4,  d6:3,  d7:5  },
+    reset:  null
+  };
+
+  // ── Calculator toggle ──────────────────────────────────────
+  window.NSO.toggleCalculator = function() {
+    const body = document.getElementById('calculator-body');
+    const icon = document.getElementById('calc-toggle-icon');
+    const isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    icon.textContent = isOpen ? 'Show ↓' : 'Hide ↑';
+  };
+
+  // ── Load preset ────────────────────────────────────────────
+  window.NSO.loadPreset = function(preset) {
+    if (preset === 'reset') {
+      calcActive = false;
+      calcWeights = { d1:1, d2:1, d3:1, d4:1, d5:1, d6:1, d7:1 };
+      // Reset sliders to 1
+      Object.keys(calcWeights).forEach(k => {
+        const slider = document.getElementById(`slider-${k}`);
+        const val = document.getElementById(`val-${k}`);
+        if (slider) slider.value = 1;
+        if (val) val.textContent = 1;
+      });
+      updateCalcStatus();
+      applyFilters();
+      return;
+    }
+    const weights = PRESETS[preset];
+    if (!weights) return;
+    calcActive = true;
+    calcWeights = { ...weights };
+    Object.entries(calcWeights).forEach(([k, v]) => {
+      const slider = document.getElementById(`slider-${k}`);
+      const val = document.getElementById(`val-${k}`);
+      if (slider) slider.value = v;
+      if (val) val.textContent = v;
+    });
+    updateCalcStatus();
+    applyFilters();
+  };
+
+  // ── Slider input ───────────────────────────────────────────
+  window.NSO.onSlider = function(dim, value) {
+    calcWeights[dim] = parseInt(value);
+    const val = document.getElementById(`val-${dim}`);
+    if (val) val.textContent = value;
+    // Active if any weight differs from 1
+    calcActive = Object.values(calcWeights).some(v => v !== 1);
+    updateCalcStatus();
+    applyFilters();
+  };
+
+  function updateCalcStatus() {
+    const status = document.getElementById('calc-status');
+    if (!status) return;
+    if (!calcActive) {
+      status.textContent = 'Showing default ranking (final score average of F1, F2, F3).';
+      return;
+    }
+    const total = Object.values(calcWeights).reduce((s,v) => s+v, 0);
+    if (total === 0) {
+      status.textContent = 'All weights at zero — set at least one above zero.';
+      return;
+    }
+    status.textContent = `Custom weighting active. Results recalculated from raw dimension scores.`;
+  }
+
+  // ── Custom score calculator ────────────────────────────────
+  function calcCustomScore(film) {
+    if (!calcActive) return film.final_score || 0;
+    const d = film.dimensions;
+    const dims = {
+      d1: d.d1_box_office,
+      d2: d.d2_audience_devotion,
+      d3: d.d3_critical_release,
+      d4: d.d4_critical_now,
+      d5: d.d5_filmmaker_influence,
+      d6: d.d6_cultural_footprint,
+      d7: d.d7_longevity_trajectory
+    };
+    const totalWeight = Object.values(calcWeights).reduce((s,v) => s+v, 0);
+    if (totalWeight === 0) return 0;
+    const score = Object.entries(calcWeights).reduce((s, [k, w]) => s + (dims[k] || 0) * w, 0);
+    return Math.round((score / totalWeight) * 10) / 10;
+  }
+
   // ── Boot ───────────────────────────────────────────────────
   fetch('films.json')
     .then(r => r.json())
@@ -110,6 +210,10 @@
 
     // Sort
     filtered.sort((a, b) => {
+      // If calculator is active, custom score overrides final_score sort
+      if (calcActive && sortKey === 'final_score') {
+        return calcCustomScore(b) - calcCustomScore(a);
+      }
       switch (sortKey) {
         case 'final_score':  return (b.final_score || 0) - (a.final_score || 0);
         case 'f1':           return (b.frameworks.f1_popular_verdict || 0) - (a.frameworks.f1_popular_verdict || 0);
@@ -153,6 +257,10 @@
       const globalRank = start + i + 1;
       const isExpanded = f.id === expandedId;
       const tier = getTier(f.final_score);
+      const displayScore = calcActive ? calcCustomScore(f) : f.final_score;
+      const scoreLabel = calcActive
+        ? `<span style="color:var(--gold); font-family:var(--font-mono);">${displayScore}</span> <span style="font-size:0.6rem; color:var(--text-muted);">custom</span>`
+        : f.final_score;
 
       return `
         <tr class="film-row${isExpanded ? ' expanded' : ''}"
@@ -167,7 +275,7 @@
           <td class="film-score f1">${f.frameworks.f1_popular_verdict ?? '—'}</td>
           <td class="film-score f2">${f.frameworks.f2_filmmakers_film ?? '—'}</td>
           <td class="film-score f3">${f.frameworks.f3_long_view ?? '—'}</td>
-          <td class="film-score final">${f.final_score ?? '—'}</td>
+          <td class="film-score final">${scoreLabel}</td>
           <td class="film-volatility">${f.volatility_index ?? '—'}</td>
         </tr>
         <tr class="film-detail${isExpanded ? ' open' : ''}" id="detail-${f.id}">

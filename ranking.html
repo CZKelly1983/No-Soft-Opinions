@@ -52,6 +52,92 @@
 
     <div class="container">
 
+      <!-- WEIGHTING CALCULATOR -->
+      <div id="calculator-panel" style="margin-bottom:1.5rem; background:var(--surface); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+
+        <!-- Header toggle -->
+        <button onclick="window.NSO.toggleCalculator()" style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; background:none; border:none; cursor:pointer; text-align:left;">
+          <div>
+            <span style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);">Try Your Own Weighting</span>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem;">Adjust the seven dimensions and watch the ranking recalculate in real time.</p>
+          </div>
+          <span id="calc-toggle-icon" style="font-family:var(--font-mono); font-size:0.8rem; color:var(--gold); flex-shrink:0; margin-left:1rem;">Show ↓</span>
+        </button>
+
+        <!-- Calculator body (hidden by default) -->
+        <div id="calculator-body" style="display:none; border-top:1px solid var(--border); padding:1.5rem;">
+
+          <!-- Presets -->
+          <div style="margin-bottom:1.25rem;">
+            <span style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-right:0.75rem;">Presets:</span>
+            <button class="page-btn" onclick="window.NSO.loadPreset('equal')" style="margin-right:0.4rem;">Equal Weight</button>
+            <button class="page-btn" onclick="window.NSO.loadPreset('f1')" style="margin-right:0.4rem; color:var(--f1-color); border-color:var(--f1-color);">F1 Popular</button>
+            <button class="page-btn" onclick="window.NSO.loadPreset('f2')" style="margin-right:0.4rem; color:var(--f2-color); border-color:var(--f2-color);">F2 Filmmaker</button>
+            <button class="page-btn" onclick="window.NSO.loadPreset('f3')" style="color:var(--f3-color); border-color:var(--f3-color);">F3 Long View</button>
+          </div>
+
+          <!-- Sliders -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1rem; margin-bottom:1.25rem;">
+            <div class="calc-slider-row" data-dim="d1">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D1 — Box Office</span>
+                <span id="val-d1" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d1" min="0" max="10" value="1" oninput="window.NSO.onSlider('d1',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d2">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D2 — Audience Devotion</span>
+                <span id="val-d2" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d2" min="0" max="10" value="1" oninput="window.NSO.onSlider('d2',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d3">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D3 — Critical at Release</span>
+                <span id="val-d3" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d3" min="0" max="10" value="1" oninput="window.NSO.onSlider('d3',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d4">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D4 — Critical Now</span>
+                <span id="val-d4" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d4" min="0" max="10" value="1" oninput="window.NSO.onSlider('d4',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d5">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D5 — Filmmaker Influence</span>
+                <span id="val-d5" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d5" min="0" max="10" value="1" oninput="window.NSO.onSlider('d5',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d6">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D6 — Cultural Footprint</span>
+                <span id="val-d6" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d6" min="0" max="10" value="1" oninput="window.NSO.onSlider('d6',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+            <div class="calc-slider-row" data-dim="d7">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+                <span style="font-size:0.78rem; color:var(--text-secondary);">D7 — Longevity Trajectory</span>
+                <span id="val-d7" style="font-family:var(--font-mono); font-size:0.75rem; color:var(--gold);">1</span>
+              </div>
+              <input type="range" id="slider-d7" min="0" max="10" value="1" oninput="window.NSO.onSlider('d7',this.value)" style="width:100%; accent-color:var(--gold);">
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem;">
+            <div id="calc-status" style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted);"></div>
+            <button onclick="window.NSO.loadPreset('reset')" class="btn btn-secondary" style="padding:0.35rem 0.9rem; font-size:0.72rem;">Reset to Default Ranking</button>
+          </div>
+
+        </div>
+      </div>
+
       <!-- FRAMEWORK KEY -->
       <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; font-family:var(--font-mono); font-size:0.7rem;">
         <span style="color:var(--f1-color);">■ F1 Popular Verdict — Box office, audience devotion, cultural footprint</span>
@@ -152,6 +238,7 @@
         <a href="index.html">Home</a>
         <a href="ranking.html">The Ranking</a>
         <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
       </nav>
     </div>
     <div class="footer-base">

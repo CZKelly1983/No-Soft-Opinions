@@ -265,6 +265,68 @@
             <p>The volatility index of 15.5 is the fourth highest in the dataset. The three frameworks disagree sharply because they are measuring genuinely different things about a film that exists in almost entirely separate registers for different audiences. The D4 of 92 — Sight and Sound number one in 2022 — sits against a D6 of 18. The most critically prestigious film in the world has almost no cultural footprint outside specialist film culture. Its D7 longevity trajectory of 88 is one of the highest in the index, reflecting a film whose standing is rising fast — but rising within a specific world. The F1 Popular Verdict of 42.6 is not a misreading. It is an accurate description of who this film has reached. The F2 Filmmaker score of 65.8 is equally accurate. The gap between them — 23.2 points, one of the widest in the index — is the argument the film makes about the two cultures it inhabits simultaneously. The methodology does not resolve that argument. It holds both truths at once.</p>
           </section>
 
+          <!-- DIMENSION COMPARISON VISUAL -->
+          <section class="about-section" id="comparison">
+            <h2>The Framework in Contrast</h2>
+            <p>The same seven dimensions. Two completely different profiles. This is what the methodology looks like when it's working — not producing a single answer, but holding two truths simultaneously.</p>
+
+            <div style="margin-top:1.5rem; background:var(--surface); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+
+              <!-- Film selector tabs -->
+              <div style="display:flex; border-bottom:1px solid var(--border);">
+                <div style="flex:1; padding:1rem 1.5rem; border-right:1px solid var(--border);">
+                  <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.25rem;">Film A</div>
+                  <div style="font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--text-primary);">The Godfather</div>
+                  <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted);">1972 · Final: 91.2 · Vol: 1.0</div>
+                </div>
+                <div style="flex:1; padding:1rem 1.5rem;">
+                  <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--f2-color); margin-bottom:0.25rem;">Film B</div>
+                  <div style="font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--text-primary);">Jeanne Dielman</div>
+                  <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted);">1975 · Final: 57.1 · Vol: 15.5</div>
+                </div>
+              </div>
+
+              <!-- Dimension bars -->
+              <div style="padding:1.5rem;">
+                <div id="comparison-bars" style="display:flex; flex-direction:column; gap:1rem;"></div>
+              </div>
+
+              <!-- Framework row -->
+              <div style="padding:1rem 1.5rem; border-top:1px solid var(--border); background:var(--surface-2);">
+                <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.75rem;">Three Framework Scores</div>
+                <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+                  <div>
+                    <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--f1-color); margin-bottom:0.4rem;">F1 Popular Verdict</div>
+                    <div style="display:flex; gap:1rem; align-items:center;">
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--gold);">90.8</span>
+                      <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">vs</span>
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--f2-color);">42.6</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--f2-color); margin-bottom:0.4rem;">F2 Filmmaker's Film</div>
+                    <div style="display:flex; gap:1rem; align-items:center;">
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--gold);">92.1</span>
+                      <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">vs</span>
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--f2-color);">65.8</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--f3-color); margin-bottom:0.4rem;">F3 Long View</div>
+                    <div style="display:flex; gap:1rem; align-items:center;">
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--gold);">90.7</span>
+                      <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">vs</span>
+                      <span style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--f2-color);">62.8</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-top:1rem; font-style:italic;">The Godfather scores within 2 points across all three frameworks — volatility 1.0. Jeanne Dielman's D4 of 92 (Sight &amp; Sound #1) sits against a D1 of 5 and D6 of 18. The methodology holds both profiles on the same scale without flattening either.</p>
+          </section>
+
           <!-- HOW SCORES WERE ESTIMATED -->
           <section class="about-section" id="scoring">
             <h2>How Scores Were Estimated</h2>
@@ -342,6 +404,7 @@
             <a href="#claude-story">Why Claude Found It Interesting</a>
             <a href="#dimensions">The Seven Dimensions</a>
             <a href="#frameworks">The Three Frameworks</a>
+            <a href="#comparison">Framework in Contrast</a>
             <a href="#examples">Worked Examples</a>
             <a href="#scoring">How Scores Were Estimated</a>
             <a href="#limitations">Known Limitations</a>
@@ -378,6 +441,35 @@
       <span class="footer-credit"><a href="https://czkelly1983.github.io/noguiltypleasures/" target="_blank">No Guilty Pleasures — British Music</a></span>
     </div>
   </footer>
+  <script>
+    // Dimension comparison chart
+    const dims = [
+      { key: 'D1', label: 'D1 — Box Office',           a: 89.6, b: 5.0  },
+      { key: 'D2', label: 'D2 — Audience Devotion',    a: 90.9, b: 49.5 },
+      { key: 'D3', label: 'D3 — Critical at Release',  a: 91.0, b: 72.0 },
+      { key: 'D4', label: 'D4 — Critical Now',         a: 97.0, b: 92.0 },
+      { key: 'D5', label: 'D5 — Filmmaker Influence',  a: 92.0, b: 72.0 },
+      { key: 'D6', label: 'D6 — Cultural Footprint',   a: 92.0, b: 18.0 },
+      { key: 'D7', label: 'D7 — Longevity Trajectory', a: 82.0, b: 88.0 },
+    ];
 
+    const container = document.getElementById('comparison-bars');
+    container.innerHTML = dims.map(d => `
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+          <span style="font-size:0.75rem; font-weight:500; color:var(--text-secondary);">${d.label}</span>
+          <div style="display:flex; gap:1rem; font-family:var(--font-mono); font-size:0.72rem;">
+            <span style="color:var(--gold);">${d.a}</span>
+            <span style="color:var(--text-muted);">·</span>
+            <span style="color:var(--f2-color);">${d.b}</span>
+          </div>
+        </div>
+        <div style="position:relative; height:6px; background:var(--surface-3); border-radius:3px; overflow:hidden;">
+          <div style="position:absolute; left:0; top:0; height:100%; width:${d.a}%; background:var(--gold); border-radius:3px; opacity:0.85;"></div>
+          <div style="position:absolute; left:0; top:0; height:100%; width:${d.b}%; background:var(--f2-color); border-radius:3px; opacity:0.6;"></div>
+        </div>
+      </div>
+    `).join('');
+  </script>
 </body>
 </html>
