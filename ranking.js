@@ -22,6 +22,7 @@
       populateGenreFilter();
       bindControls();
       checkUrlHash();
+      checkSessionFilters();
       applyFilters();
     })
     .catch(() => {
@@ -60,6 +61,20 @@
       currentPage = 1;
       applyFilters();
     });
+  }
+
+  // ── Check sessionStorage for pre-filters from other pages ─
+  function checkSessionFilters() {
+    const decade = sessionStorage.getItem('nso-filter-decade');
+    const genre = sessionStorage.getItem('nso-filter-genre');
+    if (decade) {
+      document.getElementById('filter-decade').value = decade;
+      sessionStorage.removeItem('nso-filter-decade');
+    }
+    if (genre) {
+      document.getElementById('filter-genre').value = genre;
+      sessionStorage.removeItem('nso-filter-genre');
+    }
   }
 
   // ── Check URL hash for direct film link ───────────────────

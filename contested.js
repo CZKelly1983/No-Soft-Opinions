@@ -149,34 +149,95 @@
 
   function buildContextNote(f, mode, gapVal) {
     if (!gapVal) return '';
+    const d = f.dimensions;
     const fw = f.frameworks;
-    const title = f.title;
+
+    // Pull the most useful dimension note for this gap direction
+    // Priority: D5 for filmmaker gaps, D6 for cultural gaps, D7 for trajectory gaps
+    const d5 = trimNote(d.d5_note);
+    const d6 = trimNote(d.d6_note);
+    const d7 = trimNote(d.d7_note);
+    const d2 = trimNote(d.d2_note);
 
     switch (mode) {
-      case 'volatility':
-        return `The three frameworks disagree by ${gapVal.toFixed(1)} points on average — one of the widest spreads in the index. The gap between its highest and lowest framework score is ${f.max_gap} points.`;
+      case 'volatility': {
+        // Lead with the most specific note available
+        const specific = d5 || d6 || d2;
+        if (specific) return `${specific} The gap between its highest and lowest framework score is ${f.max_gap} points.`;
+        return `Framework spread of ${f.max_gap} points — the three philosophical positions on cinematic value are in genuine disagreement here.`;
+      }
 
-      case 'f2_minus_f1':
-        return `Filmmakers and critics rate ${escHtml(title)} ${gapVal.toFixed(1)} points higher than the popular verdict suggests. Its craft and influence register more strongly in film culture than in box office or audience reach.`;
+      case 'f2_minus_f1': {
+        // Filmmaker influence note is the most relevant
+        if (d5) return `D5 Filmmaker Influence: ${d5}`;
+        if (d6) return `${d6} — absorbed into cinema without reaching the wider culture.`;
+        return `Filmmaker esteem ${gapVal.toFixed(1)} points above popular verdict. Its significance is felt primarily inside film culture.`;
+      }
 
-      case 'f1_minus_f2':
-        return `Audiences gave ${escHtml(title)} ${gapVal.toFixed(1)} points more than the filmmaker consensus. Its popular reach significantly outpaces its standing as a filmmaker's reference point.`;
+      case 'f1_minus_f2': {
+        // D6 cultural note or D2 audience note most relevant
+        if (d6 && !isGeneric(d6)) return `${d6} Popular reach ${gapVal.toFixed(1)} points above the filmmaker consensus.`;
+        if (d2 && !isGeneric(d2)) return `${d2} The audience response was real. The filmmaker community rates it differently.`;
+        return `Popular verdict ${gapVal.toFixed(1)} points above filmmaker esteem. Built for audiences rather than for cinema.`;
+      }
 
-      case 'f3_minus_f1':
-        return `History is elevating ${escHtml(title)} ${gapVal.toFixed(1)} points above what its original popularity suggested. Critical reassessment and longevity are working in its favour.`;
+      case 'f3_minus_f1': {
+        // D7 longevity and D4 reassessment most relevant
+        const d4 = trimNote(d.d4_note);
+        if (d4 && !isGeneric(d4)) return `${d4} History has been more generous than the original popular reception.`;
+        if (d7 && !isGeneric(d7)) return `${d7} Critical reassessment is outpacing what the original release suggested.`;
+        return `Long view ${gapVal.toFixed(1)} points above popular verdict. A film history is still catching up with.`;
+      }
 
-      case 'f1_minus_f3':
-        return `${escHtml(title)} scored ${gapVal.toFixed(1)} points higher on popular verdict than the long view awards it. It dominated its moment. The question is whether it lasts.`;
+      case 'f1_minus_f3': {
+        // D7 trajectory and D6 cultural note most relevant
+        if (d7 && !isGeneric(d7)) return `${d7} Popular verdict ${gapVal.toFixed(1)} points above what the long view awards it.`;
+        if (d6 && !isGeneric(d6)) return `${d6} It dominated its moment. The long view score of ${fw.f3_long_view} is the index's verdict on how much of that remains.`;
+        return `Popular verdict ${gapVal.toFixed(1)} points above the long view. Built for its moment. Whether it outlasts it is the open question.`;
+      }
 
-      case 'f3_minus_f2':
-        return `The long view rates ${escHtml(title)} ${gapVal.toFixed(1)} points above the filmmaker consensus. History is proving more generous than the industry's own assessment.`;
+      case 'f3_minus_f2': {
+        const d4 = trimNote(d.d4_note);
+        if (d4 && !isGeneric(d4)) return `${d4} History rating it ${gapVal.toFixed(1)} points above the filmmaker consensus.`;
+        if (d7 && !isGeneric(d7)) return `${d7} The long view is proving more generous than the industry's own assessment.`;
+        return `Long view ${gapVal.toFixed(1)} points above filmmaker score. Critical history is outpacing peer recognition.`;
+      }
 
-      case 'f2_minus_f3':
-        return `Filmmakers rate ${escHtml(title)} ${gapVal.toFixed(1)} points above its long-view score. Strong industry influence that hasn't yet fully translated into lasting critical standing.`;
+      case 'f2_minus_f3': {
+        if (d5 && !isGeneric(d5)) return `${d5} Filmmaker esteem ${gapVal.toFixed(1)} points above the long view — influence that hasn't fully translated into lasting critical standing.`;
+        if (d7 && !isGeneric(d7)) return `${d7} Strong filmmaker regard that the long view hasn't yet confirmed.`;
+        return `Filmmaker score ${gapVal.toFixed(1)} points above the long view. Respected inside cinema more than history has yet settled.`;
+      }
 
       default:
         return '';
     }
+  }
+
+  // Trim a note to a clean sentence-length excerpt
+  function trimNote(note) {
+    if (!note) return '';
+    const clean = note.trim();
+    // Skip pure flag letters or very short generic entries
+    if (clean.length < 8) return '';
+    // Trim to first sentence or 120 chars
+    const firstStop = clean.search(/[.!?]/);
+    if (firstStop > 20 && firstStop < 130) return clean.slice(0, firstStop + 1);
+    if (clean.length > 120) return clean.slice(0, 120).replace(/\s\S+$/, '') + '…';
+    return clean;
+  }
+
+  // Detect notes that are too generic to be useful
+  function isGeneric(note) {
+    if (!note) return true;
+    const lower = note.toLowerCase();
+    const genericPhrases = [
+      'franchise exhaustion', 'franchise continuation', 'franchise fatigue',
+      'minimal positive cultural', 'minimal cultural', 'minimal',
+      'franchise nadir', 'provisional', 'mcu sequel', 'animated sequel',
+      'children\'s sequel', 'bay spectacle'
+    ];
+    return genericPhrases.some(p => lower.includes(p) && note.length < 50);
   }
 
   function escHtml(str) {

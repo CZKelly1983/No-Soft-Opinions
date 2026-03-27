@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>By Decade — No Soft Opinions: Cinema</title>
+  <meta name="description" content="Cinema ranked and contextualised by decade, from the 1920s to the 2020s.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-brand-main">No Soft Opinions</span>
+        <span class="nav-brand-sub">Cinema</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">The Ranking</a></li>
+        <li><a href="decades.html" class="active">By Decade</a></li>
+        <li><a href="genres.html">By Genre</a></li>
+        <li><a href="contested.html">Most Contested</a></li>
+        <li><a href="blindspots.html">Blind Spots</a></li>
+        <li><a href="content.html">No Legacy</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-drawer').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Home</a>
+    <a href="ranking.html">The Ranking</a>
+    <a href="decades.html" class="active">By Decade</a>
+    <a href="genres.html">By Genre</a>
+    <a href="contested.html">Most Contested</a>
+    <a href="blindspots.html">Blind Spots</a>
+    <a href="content.html">No Legacy</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="page-header-inner">
+        <span class="page-label">Temporal View</span>
+        <h1 class="page-title">Cinema by Decade</h1>
+        <p class="page-subtitle">From the silent era to the streaming age. Each decade contextualised — what defined it, what the index reveals about it, and where conventional wisdom gets it wrong.</p>
+      </div>
+    </header>
+    <div class="container">
+      <div id="decades-container">
+        <div class="loading">Loading decade breakdowns…</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">No Soft Opinions</div>
+        <div class="footer-brand-sub">Cinema</div>
+        <p class="footer-desc">1,104 films. Seven dimensions. Three philosophical frameworks.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ranking.html">The Ranking</a>
+        <a href="about.html">About & Methodology</a>
+        <a href="dataset.html">The Dataset</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span class="footer-credit">Built in conversation with <a href="https://anthropic.com" target="_blank">Claude</a> by <a href="https://twitter.com/cjk_1983" target="_blank">@cjk_1983</a>.</span>
+    </div>
+  </footer>
+
+  <script src="decades.js"></script>
+</body>
+</html>

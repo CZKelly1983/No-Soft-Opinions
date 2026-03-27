@@ -124,33 +124,65 @@
   }
 
   function buildNote(f, gap) {
+    const d = f.dimensions;
     const f1 = f.frameworks.f1_popular_verdict;
     const f3 = f.frameworks.f3_long_view;
-    const d1 = f.dimensions.d1_box_office;
-    const d7 = f.dimensions.d7_longevity_trajectory;
-    const title = f.title;
 
-    // Recent films — jury still out
-    if (f.year >= 2015 && gap >= 10) {
-      return `Released ${f.year}. Popular verdict of ${f1} against a long view of ${f3}. Still early — the trajectory score of ${d7 ?? '?'} will tell the story over the next decade.`;
+    // Priority: D6 cultural note (most specific to why the legacy gap exists),
+    // then D7 trajectory note, then D2 audience note
+    const d6 = trimNote(d.d6_note);
+    const d7 = trimNote(d.d7_note);
+    const d2 = trimNote(d.d2_note);
+
+    // D6 often has the specific cultural moment — use it if substantive and not generic
+    if (d6 && d6.length > 25 && !isGeneric(d6)) {
+      return d7 && !isGeneric(d7)
+        ? `${d6} ${d7}.`
+        : d6;
     }
 
-    // Very high box office, low long view
-    if (d1 >= 80 && f3 < 45) {
-      return `Box office score of ${d1} — a genuine commercial phenomenon. Long view of ${f3} suggests the event didn't translate into lasting critical or cultural presence.`;
+    // D7 trajectory note is the direct measure of the legacy gap
+    if (d7 && d7.length > 20 && !isGeneric(d7)) return d7;
+
+    // D2 audience note for audience-specific observations
+    if (d2 && d2.length > 20 && !isGeneric(d2)) {
+      return `${d2} Popular verdict of ${f1} against a long view of ${f3}.`;
     }
 
-    // Large gap
-    if (gap >= 18) {
-      return `A ${gap.toFixed(1)}-point gap between popular verdict and long view — one of the widest in the index. Built for its moment. The moment has moved on.`;
+    // Score-based fallback — at least specific to this film's numbers
+    if (f.year >= 2015) {
+      return `Released ${f.year}. Popular verdict of ${f1} against a long view of ${f3}. Longevity trajectory score of ${d.d7_longevity_trajectory ?? '?'} — still too early to call.`;
     }
-
-    // Franchise films
-    if (['Superhero', 'Action'].includes(f.genre) && gap >= 12) {
-      return `Popular verdict of ${f1} driven by franchise momentum and event-cinema box office. Long view of ${f3} reflects how far that momentum has carried into lasting critical standing.`;
+    if (d.d1_box_office >= 80 && f3 < 45) {
+      return `Box office score of ${d.d1_box_office}. Long view of ${f3} is the index's verdict on what that commercial weight left behind.`;
     }
+    return `Popular verdict of ${f1} against a long view of ${f3}. The ${gap.toFixed(1)}-point gap is the distance between what it meant then and what it means now.`;
+  }
 
-    return `Popular verdict of ${f1} against a long view of ${f3}. The ${gap.toFixed(1)}-point gap is the measure of the distance between what it meant in its moment and what it means now.`;
+  function trimNote(note) {
+    if (!note) return '';
+    const clean = note.trim();
+    if (clean.length < 8) return '';
+    const stripped = clean.replace(/^[A-Z+]+:\s*/, '');
+    // Take up to first sentence break, but not too short
+    const firstStop = stripped.search(/[.!?]/);
+    if (firstStop > 20 && firstStop < 130) return stripped.slice(0, firstStop + 1);
+    if (stripped.length > 120) return stripped.slice(0, 120).replace(/\s\S+$/, '') + '…';
+    return stripped;
+  }
+
+  function isGeneric(note) {
+    if (!note) return true;
+    const lower = note.toLowerCase();
+    const genericPhrases = [
+      'franchise exhaustion', 'franchise continuation', 'franchise fatigue',
+      'franchise nadir', 'minimal positive cultural', 'minimal cultural',
+      'minimal', 'provisional', 'mcu sequel', 'animated sequel',
+      'children\'s sequel', 'bay spectacle', 'franchise disappointment',
+      'franchise dated', 'mcu disappointment'
+    ];
+    // Only flag as generic if the note is short AND matches
+    return note.length < 55 && genericPhrases.some(p => lower.includes(p));
   }
 
   function escHtml(str) {

@@ -112,24 +112,44 @@
   }
 
   function buildNote(f, gap) {
+    const d = f.dimensions;
     const f1 = f.frameworks.f1_popular_verdict;
     const f2 = f.frameworks.f2_filmmakers_film;
-    const d5 = f.dimensions.d5_filmmaker_influence;
-    const d6 = f.dimensions.d6_cultural_footprint;
 
-    if (d5 >= 85 && f1 < 55) {
-      return `Filmmaker influence score of ${d5} — one of the highest in the index — against a popular verdict of ${f1}. Studied everywhere, seen by relatively few.`;
-    }
-    if (d6 < 30 && f2 >= 70) {
-      return `Cultural footprint of ${d6} despite a filmmaker score of ${f2}. Its influence travels through other filmmakers rather than directly into culture.`;
-    }
-    if (gap >= 20) {
-      return `A ${gap.toFixed(1)}-point gap between how filmmakers rate it and how audiences found it — one of the widest disconnects in the entire index.`;
-    }
-    if (f.decade && ['1920s','1930s','1940s','1950s'].includes(f.decade)) {
-      return `A pre-war or early postwar film whose influence on cinema technique far outpaces its reach with contemporary audiences.`;
-    }
-    return `F2 score of ${f2} against a popular verdict of ${f1}. The gap is the measure of how much this film lives inside cinema rather than in the wider culture.`;
+    // D5 filmmaker influence note is the primary source — this is exactly what
+    // the blind spot gap is measuring. Use it directly if it's substantive.
+    const d5 = trimNote(d.d5_note);
+    const d6 = trimNote(d.d6_note);
+    const d2 = trimNote(d.d2_note);
+
+    if (d5 && d5.length > 20) return d5;
+    if (d6 && d6.length > 20 && !isGeneric(d6)) return `${d6} Its influence on cinema is larger than its cultural penetration suggests.`;
+    if (d2 && d2.length > 20 && !isGeneric(d2)) return `${d2} — a film with devoted specialist audiences whose reach ends at the edge of that world.`;
+
+    // Fallback: specific observation from the scores
+    if (gap >= 20) return `A ${gap.toFixed(1)}-point gap between filmmaker esteem (${f2}) and popular verdict (${f1}) — one of the widest disconnects in the entire index.`;
+    if (d.d5_filmmaker_influence >= 85) return `Filmmaker influence score of ${d.d5_filmmaker_influence} against a popular verdict of ${f1}. Studied everywhere, seen by relatively few.`;
+    return `F2 of ${f2} against a popular verdict of ${f1}. Its significance lives inside cinema rather than in the culture around it.`;
+  }
+
+  function trimNote(note) {
+    if (!note) return '';
+    const clean = note.trim();
+    if (clean.length < 8) return '';
+    // Strip leading codes like "F:", "F+C:", "F+X:" etc
+    const stripped = clean.replace(/^[A-Z+]+:\s*/, '');
+    const firstStop = stripped.search(/[.!?]/);
+    if (firstStop > 20 && firstStop < 140) return stripped.slice(0, firstStop + 1);
+    if (stripped.length > 130) return stripped.slice(0, 130).replace(/\s\S+$/, '') + '…';
+    return stripped;
+  }
+
+  function isGeneric(note) {
+    if (!note) return true;
+    const lower = note.toLowerCase();
+    const genericPhrases = ['within serious film culture', 'within feminist film culture',
+      'within documentary', 'within experimental', 'limited broader', 'minimal'];
+    return genericPhrases.some(p => lower.startsWith(p));
   }
 
   function escHtml(str) {
