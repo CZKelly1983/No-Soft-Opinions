@@ -152,7 +152,7 @@
       applyFilters();
     }, 200));
 
-    ['filter-decade', 'filter-genre', 'filter-tier'].forEach(id => {
+    ['filter-decade', 'filter-genre', 'filter-tier', 'filter-entry'].forEach(id => {
       document.getElementById(id).addEventListener('change', () => {
         currentPage = 1;
         applyFilters();
@@ -202,12 +202,19 @@
     const decade = document.getElementById('filter-decade').value;
     const genre = document.getElementById('filter-genre').value;
     const tier = document.getElementById('filter-tier').value;
+    const entry = document.getElementById('filter-entry').value;
+
+    // Show/hide the added films explanatory note
+    const noteEl = document.getElementById('added-films-note');
+    if (noteEl) noteEl.style.display = (entry === 'added' || !entry) ? 'block' : 'none';
+    if (noteEl && entry === 'original') noteEl.style.display = 'none';
 
     filtered = allFilms.filter(f => {
       if (search && !f.title.toLowerCase().includes(search)) return false;
       if (decade && f.decade !== decade) return false;
       if (genre && f.genre !== genre) return false;
       if (tier && getTier(f.final_score) !== tier) return false;
+      if (entry && f.entry_type !== entry) return false;
       return true;
     });
 
@@ -264,6 +271,9 @@
       const scoreLabel = calcActive
         ? `<span style="color:var(--gold); font-family:var(--font-mono);">${displayScore}</span> <span style="font-size:0.6rem; color:var(--text-muted);">custom</span>`
         : f.final_score;
+      const addedBadge = f.entry_type === 'added'
+        ? `<span style="font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.06em; padding:0.1rem 0.35rem; border-radius:2px; background:rgba(201,168,76,0.1); color:var(--gold-dim); border:1px solid rgba(201,168,76,0.2); margin-left:0.4rem;">+ added</span>`
+        : '';
 
       return `
         <tr class="film-row${isExpanded ? ' expanded' : ''}"
@@ -272,7 +282,7 @@
             id="film-${f.id}">
           <td class="film-rank">${globalRank}</td>
           <td class="film-title-cell">
-            <div class="film-title">${escHtml(f.title)}</div>
+            <div class="film-title">${escHtml(f.title)}${addedBadge}</div>
             <div class="film-meta">${f.year} · ${escHtml(f.genre)} · <span class="${tierClass(tier)}" style="font-family:var(--font-mono); font-size:0.65rem;">${tier}</span></div>
           </td>
           <td class="film-score f1">${f.frameworks.f1_popular_verdict ?? '—'}</td>
@@ -433,6 +443,13 @@
 
         <!-- Full width: Critique -->
         ${critique}
+
+        ${f.entry_type === 'added' ? `
+        <div style="grid-column: 1 / -1; background:var(--surface-2); border-left:3px solid var(--gold-dim); padding:1.25rem 1.5rem; border-radius:0 4px 4px 0;">
+          <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Outside the Methodology — Why This Film Was Added</div>
+          ${f.why_missing ? `<p style="font-size:0.85rem; line-height:1.7; color:var(--text-secondary); margin-bottom:${f.entry_note ? '0.6rem' : '0'};">${escHtml(f.why_missing)}</p>` : ''}
+          ${f.entry_note ? `<p style="font-size:0.85rem; line-height:1.7; color:var(--text-muted); font-style:italic;">${escHtml(f.entry_note)}</p>` : ''}
+        </div>` : ''}
 
       </div>`;
   }

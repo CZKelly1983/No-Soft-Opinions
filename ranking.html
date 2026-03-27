@@ -175,6 +175,14 @@
           </select>
         </div>
         <div class="filter-group">
+          <label class="filter-label">Entry</label>
+          <select class="filter-select" id="filter-entry">
+            <option value="">All films</option>
+            <option value="original">Original methodology</option>
+            <option value="added">Outside methodology</option>
+          </select>
+        </div>
+        <div class="filter-group">
           <label class="filter-label">Tier</label>
           <select class="filter-select" id="filter-tier">
             <option value="">All</option>
@@ -199,6 +207,11 @@
           </select>
         </div>
         <div class="filter-count" id="filter-count"></div>
+      </div>
+
+      <div id="added-films-note" style="display:none; margin-bottom:1rem; padding:0.9rem 1.25rem; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold-dim); border-radius:0 4px 4px 0; font-size:0.82rem; color:var(--text-secondary); line-height:1.6;">
+        <span style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:0.3rem;">Outside the Methodology</span>
+        74 films were added by hand after the original dataset was built — films that should have been included but fell outside the six source lists due to genre bias, documentary structural invisibility, non-Western origin, or institutional exclusion. They are scored on the same seven dimensions and three frameworks as every other film. The reason each was missed is documented in its expanded view.
       </div>
 
       <!-- TABLE -->
