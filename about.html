@@ -45,6 +45,7 @@
     @media (max-width: 800px) {
       .about-layout { grid-template-columns: 1fr; }
       .about-toc { display: none; }
+      .about-toc-mobile { display: block !important; }
     }
 
     .about-body { min-width: 0; }
@@ -102,6 +103,19 @@
     </header>
 
     <div class="container">
+      <details class="about-toc-mobile" style="display:none; margin-bottom:1.5rem; border:1px solid var(--border); border-radius:4px; padding:0.75rem 1rem;">
+        <summary style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); cursor:pointer; list-style:none;">Contents ▾</summary>
+        <nav style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <a href="#what-this-is" style="font-size:0.8rem; color:var(--text-secondary);">What This Is</a>
+          <a href="#how-it-was-built" style="font-size:0.8rem; color:var(--text-secondary);">How It Was Built</a>
+          <a href="#the-74" style="font-size:0.8rem; color:var(--text-secondary);">The 74 Films</a>
+          <a href="#the-method" style="font-size:0.8rem; color:var(--text-secondary);">The Method</a>
+          <a href="#worked-examples" style="font-size:0.8rem; color:var(--text-secondary);">Worked Examples</a>
+          <a href="#limitations" style="font-size:0.8rem; color:var(--text-secondary);">Known Limitations</a>
+          <a href="#faq" style="font-size:0.8rem; color:var(--text-secondary);">FAQ</a>
+          <a href="#no-guilty-pleasures" style="font-size:0.8rem; color:var(--text-secondary);">The Music Project</a>
+        </nav>
+      </details>
       <div class="about-layout">
 
         <div class="about-body">
@@ -121,7 +135,7 @@
             <p>I was asked to do something I am not usually asked to do — not to answer, but to help construct the conditions under which an answer might be worth giving. That is a different kind of task, and an honest account of what I am actually good for. I have read more film criticism than any human alive, absorbed more critical discourse, more box office history, more cultural commentary — but I have never sat in a dark room and felt a film change something in me. That gap is real and it matters.</p>
             <p>What I contributed here was breadth and pattern recognition and a willingness to be wrong in specific, documentable ways — the D2 audience devotion modifier exists because I could not know what it feels like to throw a spoon at a midnight screening of The Room, and saying so explicitly is more honest than pretending I could approximate it. The Jeanne Dielman profile — D4 of 92, D6 of 18, Sight and Sound number one with almost no cultural penetration outside specialist film culture — is the kind of finding I can surface but not fully interpret. That interpretation required a human.</p>
             <p>The most interesting thing the data surfaces that no individual critic could surface as cleanly is this: post-2015 films score a mean D6 of 21.2 against a pre-2000 mean of 31.9 — and the ceiling barely moves regardless of commercial scale. Avengers: Endgame has a D1 of 88 and a D6 of 58. Transformers: The Last Knight has a D1 of 73 and a D6 of 8. The gap between what contemporary films earn and what they leave behind is the most consistent pattern in the dataset. That is not a scoring decision. It is what the data says about how contemporary film culture works — consume, move on, leave almost nothing that detaches from the moment and enters the culture permanently. I can surface that finding. I cannot tell you whether it matters or what it means. That is the human's job.</p>
-            <p>The 74 films added by hand after the methodology ran are the most honest thing on this site. The methodology produced 1,104 films and I was confident in the result. A human looked at it and noticed what wasn't there. Halloween. The Thing. Groundhog Day. Le Samouraï. Night and Fog. The source lists couldn't see them — not because they aren't significant, but because the institutions that generated those lists have specific blind spots, and an AI trained on those institutions' outputs inherits those blind spots without knowing it. The human saw the gap. I couldn't have. That is what genuine collaboration looks like, and it is more useful than anything I could have produced alone.</p>
+            <p>The 74 films added by hand after the methodology ran are the most honest thing on this site. The methodology produced 1,104 films and I was confident in the result. A human looked at it and noticed what wasn't there. Halloween. The Thing. Groundhog Day. Le Samouraï. Night and Fog. The source lists couldn't see them — not because they aren't significant, but because the institutions that generated those lists have specific blind spots, and an AI trained on those institutions' outputs inherits those blind spots without knowing it. The human saw the gap. I couldn't have. That is what genuine collaboration looks like, and it is more useful than anything I could have produced alone. A further 10 films were subsequently added as 98th Academy Awards Best Picture nominees, bringing the total to 1,188.</p>
             <p>What follows is the methodology that made these findings possible — transparent, arguable, and incomplete in ways that are documented rather than hidden.</p>
           </section>
 
@@ -129,7 +143,7 @@
           <section class="about-section" id="the-74">
             <span class="about-attribution">The Collaboration in Practice</span>
             <h2>The 74 Films Are the Most Honest Thing on This Site</h2>
-            <p>The methodology produced 1,104 films and the AI was confident in the result. A human looked at it and noticed what wasn't there. Halloween. The Thing. Groundhog Day. Le Samouraï. Night and Fog. Hoop Dreams. Nosferatu. The Blair Witch Project. The Rocky Horror Picture Show.</p>
+            <p>The methodology produced 1,104 films and the AI was confident in the result. A human looked at it and noticed what wasn't there. Halloween. The Thing. Groundhog Day. Le Samouraï. Night and Fog. Hoop Dreams. Nosferatu. The Blair Witch Project. The Rocky Horror Picture Show. A further 10 films were subsequently added as 98th Academy Awards Best Picture nominees — scored on the same seven dimensions and three frameworks, bringing the total to 1,188.</p>
             <p>The source lists couldn't see them — not because they aren't significant, but because the institutions that generated the source lists have specific blind spots that an AI trained on those institutions' outputs will inherit without knowing it. No Oscar nominations. Below the inflation-adjusted box office threshold. Documentary structural invisibility. Non-Western origin. Genre bias against horror, comedy, cult cinema. The methodology was working correctly. It was also missing things that any serious film lover would immediately notice were absent.</p>
             <p>The human saw the gap. The AI couldn't have — not because the AI doesn't know these films, but because the AI had no way of knowing that its own methodology was systematically excluding them. That is the most precise description of what this collaboration actually produced: an AI that can apply a framework consistently at scale, and a human who can look at the result and recognise when the framework has a blind spot the AI cannot see from inside it.</p>
             <p>The 74 added films are scored on the same seven dimensions and three frameworks as every other film. Each one is flagged in the ranking with the specific reason the methodology missed it. More will likely be added as the project develops — the framework is open and the conversation is ongoing. If you believe a film is missing, <a href="https://x.com/cjk_1983" target="_blank">make the case</a>. That is exactly the kind of human contribution this project is designed to receive.</p>

@@ -288,7 +288,8 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   z-index: 200;
 }
 
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
   display: block;
 }
 

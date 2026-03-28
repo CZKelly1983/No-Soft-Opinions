@@ -446,7 +446,7 @@
 
         ${f.entry_type === 'added' ? `
         <div style="grid-column: 1 / -1; background:var(--surface-2); border-left:3px solid var(--gold-dim); padding:1.25rem 1.5rem; border-radius:0 4px 4px 0;">
-          <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Outside the Methodology — Why This Film Was Added</div>
+          <div style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Added by Hand — Why This Film Was Added</div>
           ${f.why_missing ? `<p style="font-size:0.85rem; line-height:1.7; color:var(--text-secondary); margin-bottom:${f.entry_note ? '0.6rem' : '0'};">${escHtml(f.why_missing)}</p>` : ''}
           ${f.entry_note ? `<p style="font-size:0.85rem; line-height:1.7; color:var(--text-muted); font-style:italic;">${escHtml(f.entry_note)}</p>` : ''}
         </div>` : ''}
